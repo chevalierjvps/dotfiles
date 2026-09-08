@@ -1,0 +1,19 @@
+/* Amberglow — powermenu compacto (sem barra de busca, lista vertical) */
+@import "amberglow.rasi"
+
+window {
+    width:    280px;
+    location: center;
+}
+
+mainbox {
+    children: ["listview"];
+}
+
+listview {
+    lines:     5;
+    columns:   1;
+    spacing:   4px;
+    cycle:     true;
+    scrollbar: false;
+}

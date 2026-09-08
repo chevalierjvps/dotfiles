@@ -1,0 +1,48 @@
+# This repo tracks ONLY the Amberglow rice dotfiles below — everything else
+# in $HOME is ignored by default. Never remove the leading "/*" blanket
+# ignore; only add more "!/path" allowlist entries as needed.
+/*
+
+# ── mango (compositor) ──
+!/.config/
+/.config/*
+!/.config/mango/
+
+# ── waybar ──
+!/.config/waybar/
+
+# ── rofi ──
+!/.config/rofi/
+
+# ── mako (notifications) ──
+!/.config/mako/
+
+# ── systemd environment.d fixes ──
+!/.config/environment.d/
+/.config/environment.d/*
+!/.config/environment.d/mangohud-disable.conf
+!/.config/environment.d/cursor-theme.conf
+!/.config/environment.d/zapzap-gpu-fix.conf
+
+# ── app launcher overrides (.desktop) ──
+!/.local/
+/.local/*
+!/.local/share/
+/.local/share/*
+!/.local/share/applications/
+/.local/share/applications/*
+!/.local/share/applications/helium.desktop
+!/.local/share/applications/brave-origin-nightly.desktop
+!/.local/share/applications/com.brave.Origin.nightly.desktop
+!/.local/share/applications/com.rtosta.zapzap.desktop
+!/.local/share/chrome-themes/
+
+# ── browser chrome themes (copied out of the live profile — profile dirs
+# are random per-install hashes, so these are NOT symlinked into place) ──
+!/browser-themes/
+
+# ── ly (display manager) theme, for reference (lives at /etc/ly, root-owned) ──
+!/ly-theme/
+
+!/README.md
+!/.gitignore

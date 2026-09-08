@@ -1,0 +1,14 @@
+configuration {
+    modi:                "drun,run,window,🧮:~/.config/rofi/scripts/calc_mode.sh,📶:~/.config/rofi/scripts/wifi_mode.sh,🔵:~/.config/rofi/scripts/bt_mode.sh,⌨:~/.config/rofi/scripts/keys_mode.sh,😀:~/.config/rofi/scripts/emoji_mode.sh,🔔:~/.config/rofi/scripts/notif_mode.sh";
+    show-icons:          true;
+    icon-theme:          "Papirus-Dark";
+    display-drun:        "🚀";
+    display-run:         "⚡";
+    display-window:      "🪟";
+    drun-display-format: "{name}";
+    sidebar-mode:        true;
+    disable-history:     false;
+    matching:            "fuzzy";
+}
+
+@theme "amberglow"

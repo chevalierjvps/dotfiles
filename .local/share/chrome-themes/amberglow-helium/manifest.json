@@ -1,0 +1,39 @@
+{
+  "manifest_version": 3,
+  "name": "Amberglow",
+  "description": "Retro CRT/phosphor amber theme, matching the rest of the desktop.",
+  "version": "1.0",
+  "icons": {
+    "16": "icon16.png",
+    "48": "icon48.png",
+    "128": "icon128.png"
+  },
+  "theme": {
+    "images": {},
+    "colors": {
+      "frame": [26, 21, 15],
+      "frame_inactive": [26, 21, 15],
+      "toolbar": [26, 21, 15],
+      "toolbar_text": [224, 212, 176],
+      "tab_text": [224, 212, 176],
+      "tab_background_text": [224, 212, 176],
+      "bookmark_text": [224, 212, 176],
+      "button_background": [36, 29, 21],
+      "toolbar_button_icon": [224, 212, 176],
+      "omnibox_background": [36, 29, 21],
+      "omnibox_text": [224, 212, 176],
+      "ntp_background": [26, 21, 15],
+      "ntp_text": [224, 212, 176],
+      "ntp_link": [232, 149, 45],
+      "ntp_section": [36, 29, 21],
+      "ntp_section_text": [224, 212, 176],
+      "ntp_section_link": [232, 149, 45]
+    },
+    "tints": {
+      "buttons": [0.093, 0.8, 0.54]
+    },
+    "properties": {
+      "ntp_background_alignment": "bottom"
+    }
+  }
+}

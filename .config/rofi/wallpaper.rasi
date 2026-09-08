@@ -1,0 +1,37 @@
+/* Amberglow — wallpaper selector (grade de miniaturas) */
+@import "amberglow.rasi"
+
+window {
+    width:    900px;
+    location: center;
+}
+
+listview {
+    lines:        2;
+    columns:      4;
+    spacing:      10px;
+    cycle:        true;
+    scrollbar:    false;
+}
+
+element {
+    orientation:   vertical;
+    padding:       6px;
+    border:        1px solid;
+    border-color:  #4a3f30;
+}
+
+element selected {
+    border-color: #e8952d;
+}
+
+element-icon {
+    size:             9em;
+    horizontal-align: 0.5;
+}
+
+element-text {
+    horizontal-align: 0.5;
+    padding:          4px 0 0 0;
+    font:             "DepartureMono Nerd Font Mono 9";
+}

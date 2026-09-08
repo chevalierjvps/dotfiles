@@ -1,0 +1,101 @@
+/* ==========================================================================
+   Amberglow — retro CRT theme for LibreWolf chrome (vanilla Firefox UI,
+   no Nebula/Sine here — reskinned directly via Firefox's own LWT vars).
+   Same palette as mango/waybar/rofi/Zen.
+   ========================================================================== */
+
+:root {
+  --lwt-accent-color: #1a150f;
+  --lwt-accent-color-inactive: #1a150f;
+  --lwt-text-color: #e0d4b0;
+  --lwt-toolbar-field-background-color: #241d15;
+  --lwt-toolbar-field-color: #e0d4b0;
+  --lwt-toolbar-field-border-color: #4a3f30;
+  --lwt-toolbar-field-focus: #241d15;
+  --lwt-toolbar-field-focus-color: #e0d4b0;
+  --toolbar-bgcolor: #1a150f !important;
+  --toolbar-color: #e0d4b0 !important;
+  --tab-selected-bgcolor: #241d15 !important;
+  --tabpanel-background-color: #1a150f !important;
+  --toolbarbutton-icon-fill: #e0d4b0 !important;
+  --lwt-toolbarbutton-icon-fill: #e0d4b0 !important;
+}
+
+:root,
+.tab-label,
+#urlbar-input,
+menupopup,
+panel,
+#identity-icon-label {
+  font-family: "DepartureMono Nerd Font Mono", monospace !important;
+}
+
+#navigator-toolbox,
+#TabsToolbar,
+#titlebar,
+#PersonalToolbar {
+  background-color: #1a150f !important;
+  color: #e0d4b0 !important;
+  border: none !important;
+}
+
+#tabbrowser-tabs,
+.tabbrowser-tab {
+  background-color: transparent !important;
+}
+.tab-background {
+  background-color: #1a150f !important;
+  border-radius: 0 !important;
+}
+.tabbrowser-tab[selected] .tab-background {
+  background-color: #241d15 !important;
+  box-shadow: inset 0 -2px 0 #e8952d !important;
+}
+.tab-label {
+  color: #e0d4b0 !important;
+}
+
+#urlbar-background {
+  background-color: #241d15 !important;
+  border: 1px solid #4a3f30 !important;
+  border-radius: 0 !important;
+}
+#urlbar[focused="true"] #urlbar-background {
+  border-color: #e8952d !important;
+}
+#urlbar-input {
+  color: #e0d4b0 !important;
+}
+
+#urlbar-results,
+.urlbarView {
+  background-color: #1a150f !important;
+  border: 1px solid #4a3f30 !important;
+}
+.urlbarView-row[selected] {
+  background-color: #e8952d !important;
+  color: #1a150f !important;
+}
+
+menupopup,
+panel {
+  background-color: #1a150f !important;
+  color: #e0d4b0 !important;
+  border: 1px solid #4a3f30 !important;
+}
+menuitem:hover,
+menuitem[_moz-menuactive="true"] {
+  background-color: #e8952d !important;
+  color: #1a150f !important;
+}
+
+toolbarbutton:hover,
+.toolbarbutton-1:hover {
+  background-color: #241d15 !important;
+}
+
+#sidebar-box,
+#sidebar {
+  background-color: #1a150f !important;
+  color: #e0d4b0 !important;
+}

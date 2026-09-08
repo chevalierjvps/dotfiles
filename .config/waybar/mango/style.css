@@ -1,0 +1,228 @@
+/* Amberglow — retro CRT/phosphor waybar, combinando com o config.conf do mango */
+
+* {
+  font-family: "DepartureMono Nerd Font", monospace;
+  font-size: 13px;
+  border: none;
+  border-radius: 0;
+  min-height: 0;
+}
+
+window#waybar {
+  background-color: #1a150f;
+  color: #e0d4b0;
+  border-bottom: 2px solid #e8952d;
+  /* leve textura de scanline, bem sutil */
+  background-image: repeating-linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.15) 0px,
+    rgba(0, 0, 0, 0.15) 1px,
+    transparent 1px,
+    transparent 3px
+  );
+}
+
+#custom-launcher,
+#custom-pacman,
+#custom-tags,
+#mpris,
+#custom-weather,
+#clock,
+#idle_inhibitor,
+#custom-cpu-temp,
+#network,
+#bluetooth,
+#pulseaudio,
+#custom-mic,
+#backlight,
+#battery,
+#custom-notifications,
+#tray,
+#custom-lock,
+#custom-power {
+  padding: 0 10px;
+  margin: 3px 2px;
+  border: 1px solid #4a3f30;
+  background-color: #241d15;
+  color: #e0d4b0;
+}
+
+#custom-launcher:hover,
+#mpris:hover,
+#custom-weather:hover,
+#idle_inhibitor:hover,
+#custom-cpu-temp:hover,
+#network:hover,
+#bluetooth:hover,
+#pulseaudio:hover,
+#custom-mic:hover,
+#backlight:hover,
+#battery:hover,
+#custom-notifications:hover,
+#custom-lock:hover {
+  border-color: #e8952d;
+  color: #f2a94a;
+}
+
+/* logo do Arch em amber — mesma caixa escura dos outros módulos, mas com
+   brilho de fósforo pra se destacar como o botão principal da barra */
+/* o glifo do logo do Arch tem mais espaço vazio abaixo do que acima dentro
+   da própria célula da fonte — padding assimétrico empurra ele pro centro */
+#custom-launcher {
+  color: #e8952d;
+  border-color: #e8952d;
+  text-shadow: 0 0 8px rgba(232, 149, 45, 0.8);
+  padding: 0 10px;
+}
+#custom-launcher:hover {
+  color: #f2a94a;
+  background-color: #2c2418;
+}
+
+#custom-tags {
+  letter-spacing: 1px;
+  transition: border-color 0.15s ease-in-out;
+}
+#custom-tags:hover {
+  border-color: #e8952d;
+}
+
+/* Pac-Man comendo pastilhas = atualizações pendentes do pacman/AUR —
+   a animação (boca abre/fecha) vem do próprio script, não de CSS: builds
+   anteriores de CSS @keyframes não animavam de forma confiável aqui. */
+#custom-pacman {
+  font-weight: bold;
+}
+#custom-pacman.uptodate {
+  color: #6a5f4d;
+  border-color: #4a3f30;
+}
+#custom-pacman.pending {
+  color: #e8952d;
+  border-color: #e8952d;
+  text-shadow: 0 0 6px rgba(232, 149, 45, 0.5);
+}
+#custom-pacman.pending:hover {
+  background-color: #e8952d;
+  color: #1a150f;
+  text-shadow: none;
+}
+
+/* título da janela focada: sem caixa própria, como uma linha de status
+   "impressa" direto no painel — só um traço fino separando das tags */
+#custom-title {
+  padding: 0 12px 0 14px;
+  margin: 3px 2px;
+  color: #8a7d63;
+  font-style: italic;
+  border-left: 1px solid #4a3f30;
+  background: transparent;
+}
+
+/* mpris visível mas compacto: leve tingimento verde e negrito, sem inflar
+   o tamanho da caixa — max-length curto no config já corta o título */
+#mpris {
+  color: #b7d47f;
+  background-color: rgba(157, 187, 92, 0.14);
+  border: 1px solid #9dbb5c;
+  font-weight: bold;
+  text-shadow: 0 0 5px rgba(157, 187, 92, 0.5);
+}
+#mpris.paused {
+  color: #8a7d63;
+  background-color: #241d15;
+  border-color: #4a3f30;
+  font-weight: normal;
+  text-shadow: none;
+}
+
+#idle_inhibitor.activated {
+  color: #1a150f;
+  background-color: #e8952d;
+  border-color: #e8952d;
+}
+
+#custom-cpu-temp.warning {
+  color: #e8952d;
+}
+#custom-cpu-temp.critical {
+  color: #d9483d;
+  font-weight: bold;
+}
+
+#clock {
+  font-weight: bold;
+  color: #e8952d;
+  border-color: #e8952d;
+  letter-spacing: 1px;
+  text-shadow: 0 0 6px rgba(232, 149, 45, 0.5);
+}
+
+#network.disconnected,
+#bluetooth.disabled {
+  color: #6a5f4d;
+}
+
+#tray > .passive {
+  opacity: 0.6;
+}
+#tray > .needs-attention {
+  background-color: #d9483d;
+}
+
+#pulseaudio.muted {
+  color: #6a5f4d;
+}
+
+#custom-mic.muted {
+  color: #d9483d;
+  border-color: #d9483d;
+}
+#custom-mic.unmuted {
+  color: #d8c48a;
+}
+
+#battery.warning {
+  color: #e8952d;
+}
+#battery.critical {
+  color: #d9483d;
+  font-weight: bold;
+}
+#battery.charging {
+  color: #9dbb5c;
+}
+
+#custom-notifications.dnd {
+  color: #6a5f4d;
+  border-color: #4a3f30;
+}
+#custom-notifications.active {
+  color: #e8952d;
+  border-color: #e8952d;
+  text-shadow: 0 0 6px rgba(232, 149, 45, 0.5);
+}
+
+#custom-lock {
+  font-weight: bold;
+  color: #e8952d;
+  border-color: #e8952d;
+  text-shadow: 0 0 6px rgba(232, 149, 45, 0.5);
+}
+#custom-lock:hover {
+  background-color: #e8952d;
+  color: #1a150f;
+  text-shadow: none;
+}
+
+#custom-power {
+  font-weight: bold;
+  color: #e8952d;
+  border-color: #e8952d;
+  text-shadow: 0 0 6px rgba(232, 149, 45, 0.5);
+}
+#custom-power:hover {
+  background-color: #e8952d;
+  color: #1a150f;
+  text-shadow: none;
+}

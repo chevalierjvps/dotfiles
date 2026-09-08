@@ -1,0 +1,128 @@
+/* Amberglow — mesma paleta do mango/waybar */
+
+* {
+    bg:         #1a150fee;
+    bg-alt:     #241d15ee;
+    border-col: #4a3f30;
+    amber:      #e8952d;
+    green:      #9dbb5c;
+    red:        #d9483d;
+    cream:      #d8c48a;
+    fg:         #e0d4b0;
+    fg-dim:     #8a7d63;
+
+    background-color: transparent;
+    text-color:       @fg;
+    font:             "DepartureMono Nerd Font Mono 12";
+}
+
+window {
+    background-color: @bg;
+    border:           2px;
+    border-color:     @amber;
+    border-radius:    0px;
+    width:            600px;
+    location:         center;
+    transparency:     "real";
+}
+
+mainbox {
+    background-color: transparent;
+    padding:          14px;
+    spacing:          12px;
+    children:         ["inputbar", "message", "listview", "mode-switcher"];
+}
+
+mode-switcher {
+    background-color: transparent;
+    spacing:          4px;
+}
+
+button {
+    background-color: @bg-alt;
+    text-color:       @fg-dim;
+    border:           1px;
+    border-color:     @border-col;
+    padding:          6px 4px;
+}
+
+button selected {
+    background-color: @amber;
+    text-color:       #1a150f;
+    border-color:     @amber;
+}
+
+inputbar {
+    background-color: @bg-alt;
+    border:           1px;
+    border-color:     @border-col;
+    border-radius:    0px;
+    padding:          10px 14px;
+    spacing:          10px;
+    children:         ["prompt", "entry"];
+}
+
+prompt {
+    background-color: transparent;
+    text-color:       @amber;
+    font:             "DepartureMono Nerd Font Mono 12";
+}
+
+entry {
+    background-color: transparent;
+    text-color:       @fg;
+    placeholder:      "buscar…";
+    placeholder-color: @fg-dim;
+}
+
+message {
+    background-color: @bg-alt;
+    border:           1px;
+    border-color:     @border-col;
+    padding:          8px 12px;
+    text-color:       @fg-dim;
+}
+
+listview {
+    background-color: transparent;
+    lines:            8;
+    columns:          1;
+    spacing:          4px;
+    cycle:            true;
+    fixed-height:     false;
+    scrollbar:        false;
+}
+
+element {
+    background-color: transparent;
+    text-color:       @fg;
+    padding:          8px 12px;
+    border-radius:    0px;
+    orientation:      horizontal;
+    spacing:          10px;
+}
+
+element normal.urgent,
+element alternate.urgent {
+    text-color: @red;
+}
+
+element selected {
+    background-color: @amber;
+    text-color:       #1a150f;
+}
+
+element selected.urgent {
+    background-color: @red;
+    text-color:       #1a150f;
+}
+
+element-icon {
+    size:          1.4em;
+    vertical-align: 0.5;
+}
+
+element-text {
+    vertical-align: 0.5;
+    highlight:      bold underline;
+}

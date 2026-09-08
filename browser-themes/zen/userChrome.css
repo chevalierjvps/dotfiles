@@ -1,0 +1,79 @@
+/* Restaura a transparência/glass do Nebula na barra de pesquisa e no dropdown de
+   resultados: o template do noctalia pinta um background sólido nesses elementos
+   (var(--surface)) que sobrepõe o painel translúcido do Nebula (.urlbar-background
+   com backdrop-filter). Sobrevive a regenerações do noctalia (apply.sh só mexe na
+   linha do @import acima). */
+.urlbar-background {
+  background-color: transparent !important;
+}
+
+#urlbar-results {
+  background-color: transparent !important;
+}
+
+/* ==========================================================================
+   Amberglow — reskin do tema Nebula (sine-mods) pra combinar com o resto do
+   sistema (mango/waybar/rofi). Sobrescreve só as variáveis que o Nebula já
+   expõe (Nebula-config.css), então sobrevive a updates do tema em si.
+   ========================================================================== */
+:root {
+  /* Retro/CRT: cantos retos, painel sólido em vez de vidro fosco */
+  --nebula-border-radius: 0px !important;
+  --nebula-workspace-grayscale: 0% !important;
+  --nebula-glass: blur(6px) saturate(115%) !important;
+
+  /* Paleta Amberglow */
+  --nebula-color-glass: rgba(26, 21, 15, 0.94) !important;
+  --nebula-color-min: rgba(36, 29, 21, 0.9) !important;
+  --nebula-color: rgba(74, 63, 48, 0.4) !important;
+  --nebula-color-hover: rgba(232, 149, 45, 0.28) !important;
+  --nebula-color-selected: rgba(232, 149, 45, 0.55) !important;
+  --nebula-color-shadow: rgba(0, 0, 0, 0.6) !important;
+
+  --nebula-ui-tint: rgba(26, 21, 15, 0.3) !important;
+  --nebula-website-tint: rgba(0, 0, 0, 0) !important;
+
+  /* Cor de destaque do BetterPiP (miniplayer flutuante) */
+  --nebula-primary-color: #e8952d !important;
+}
+
+/* Fonte do chrome do navegador igual ao resto do sistema */
+:root,
+.tab-label,
+#urlbar-input,
+menupopup,
+panel,
+#identity-icon-label {
+  font-family: "DepartureMono Nerd Font Mono", monospace !important;
+}
+
+/* Base sólida da toolbox/sidebar de abas (o Nebula só aplica tintas de vidro
+   por cima disso — sem isso aqui a base continua o cinza padrão do Zen) */
+#navigator-toolbox,
+#titlebar,
+#TabsToolbar,
+#zen-appcontent-navbar-wrapper {
+  background-color: #1a150f !important;
+  color: #e0d4b0 !important;
+}
+
+.tabbrowser-tab .tab-label {
+  color: #e0d4b0 !important;
+}
+
+.tab-background {
+  border-radius: 0 !important;
+}
+.tabbrowser-tab[selected] .tab-background {
+  background-color: #241d15 !important;
+  box-shadow: inset 0 -2px 0 #e8952d !important;
+}
+
+#urlbar-background,
+#Nebula-urlbar-background {
+  border: 1px solid #4a3f30 !important;
+}
+
+#urlbar[focused="true"] #urlbar-background {
+  border-color: #e8952d !important;
+}

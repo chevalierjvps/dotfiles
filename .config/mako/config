@@ -1,0 +1,26 @@
+font=DepartureMono Nerd Font 11
+width=340
+height=120
+margin=10
+padding=12
+border-size=2
+border-radius=0
+background-color=#1a150fee
+text-color=#e0d4b0
+border-color=#e8952d
+progress-color=over #241d15
+default-timeout=6000
+layer=top
+anchor=top-right
+
+[urgency=low]
+border-color=#4a3f30
+text-color=#8a7d63
+
+[urgency=critical]
+border-color=#d9483d
+text-color=#f0dfb8
+default-timeout=0
+
+[mode=do-not-disturb]
+invisible=1

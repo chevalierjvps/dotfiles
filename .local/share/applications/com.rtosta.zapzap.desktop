@@ -1,0 +1,16 @@
+[Desktop Entry]
+Version=1.0
+Name=ZapZap
+Comment[pt_BR]=WhatsApp Desktop para Linux
+Comment=WhatsApp Desktop for Linux
+Exec=env QTWEBENGINE_CHROMIUM_FLAGS=--disable-gpu-compositing zapzap %u
+Icon=com.rtosta.zapzap
+Type=Application
+Categories=Chat;Network;InstantMessaging;Qt;
+Keywords=WhatsApp;Chat;ZapZap;
+StartupWMClass=zapzap
+MimeType=x-scheme-handler/whatsapp
+Terminal=false
+SingleMainWindow=true
+X-GNOME-UsesNotifications=true
+X-GNOME-SingleWindow=true
