@@ -44,5 +44,8 @@
 # ── ly (display manager) theme, for reference (lives at /etc/ly, root-owned) ──
 !/ly-theme/
 
+# ── screenshots for the README ──
+!/screenshots/
+
 !/README.md
 !/.gitignore

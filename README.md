@@ -8,6 +8,8 @@ This repo tracks *only* the rice files, out of an otherwise-untracked `$HOME`
 — see `.gitignore` if you're wondering why `git status` looks empty on
 everything else.
 
+![rofi launcher with the mode-switcher tabs (apps, calc, wifi, bluetooth, keybinds, emoji, notifications) and the waybar bar visible above it](screenshots/rofi-launcher.png)
+
 ## What's here
 
 | Path | What |
