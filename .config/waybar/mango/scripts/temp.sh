@@ -1,7 +1,7 @@
 #!/bin/bash
 t=$(sensors 2>/dev/null | awk '/^Package id 0:/ {gsub(/[+°C]/,"",$4); print int($4)}')
 if [ -z "$t" ]; then
-    echo '{"text": "N/A", "tooltip": "sensor indisponível"}'
+    echo '{"text": "N/A", "tooltip": "sensor unavailable"}'
     exit 0
 fi
 class="normal"

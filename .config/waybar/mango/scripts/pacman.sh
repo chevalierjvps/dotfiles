@@ -36,10 +36,10 @@ while true; do
     frame=$((frame + 1))
 
     if (( total > 0 )); then
-        printf '{"text":"%s %d","tooltip":"%d atualizações pendentes (%d oficiais, %d AUR)\\nclique: atualizar","class":"pending"}\n' \
+        printf '{"text":"%s %d","tooltip":"%d pending updates (%d official, %d AUR)\\nclick: update","class":"pending"}\n' \
             "$mouth" "$total" "$total" "$official" "$aur"
     else
-        printf '{"text":"%s","tooltip":"sistema atualizado","class":"uptodate"}\n' "$mouth"
+        printf '{"text":"%s","tooltip":"System is up to date","class":"uptodate"}\n' "$mouth"
     fi
 
     sleep 0.4

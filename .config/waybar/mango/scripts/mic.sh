@@ -1,12 +1,11 @@
 #!/usr/bin/env bash
-# Indicador de microfone (source padrão): ícone muda entre normal/mudo,
-# atualizado em tempo real via pactl subscribe (mesmo padrão de tags.sh).
+# Microphone indicator (default source): real-time updates via pactl subscribe
 set -u
 
 emit() {
     local raw muted vol percent icon class
     raw="$(wpctl get-volume @DEFAULT_AUDIO_SOURCE@ 2>/dev/null)"
-    [ -z "$raw" ] && { printf '{"text":"","tooltip":"sem entrada de áudio"}\n'; return; }
+    [ -z "$raw" ] && { printf '{"text":"","tooltip":"No audio input"}\n'; return; }
     vol="$(awk '{print $2}' <<<"$raw")"
     percent="$(awk -v v="$vol" 'BEGIN{printf "%d", v*100}')"
     if grep -q MUTED <<<"$raw"; then
@@ -16,7 +15,7 @@ emit() {
         icon=$''
         class="unmuted"
     fi
-    printf '{"text":"%s  %s%%","tooltip":"Microfone (clique: mutar)","class":"%s"}\n' "$icon" "$percent" "$class"
+    printf '{"text":"%s  %s%%","tooltip":"Microphone (click to toggle mute)","class":"%s"}\n' "$icon" "$percent" "$class"
 }
 
 emit

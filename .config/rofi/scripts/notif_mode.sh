@@ -1,19 +1,18 @@
 #!/usr/bin/env bash
-# Rofi script-mode: gerenciador de notificações (mako). Adicionar ao modi do
-# rofi como "notif:~/.config/rofi/scripts/notif_mode.sh"
+# Rofi script-mode: Notification Manager (mako)
 set -u
 
 list() {
-    echo -en "\0prompt\x1fnotificações\n"
+    echo -en "\0prompt\x1fnotif\n"
 
     if makoctl mode | grep -qx "do-not-disturb"; then
-        printf '%s Não Perturbe: ligado (clique pra desligar)\0info\x1f__toggle_dnd\n' "$(printf '')"
+        printf '%s Do Not Disturb: Enabled (click to disable)\0info\x1f__toggle_dnd\n' "$(printf '')"
     else
-        printf '%s Não Perturbe: desligado (clique pra ligar)\0info\x1f__toggle_dnd\n' "$(printf '')"
+        printf '%s Do Not Disturb: Disabled (click to enable)\0info\x1f__toggle_dnd\n' "$(printf '')"
     fi
 
-    printf '%s Limpar todas\0info\x1f__dismiss_all\n' "$(printf '')"
-    printf '%s Restaurar última descartada\0info\x1f__restore\n' "$(printf '')"
+    printf '%s Dismiss all notifications\0info\x1f__dismiss_all\n' "$(printf '')"
+    printf '%s Restore last dismissed\0info\x1f__restore\n' "$(printf '')"
 
     active="$(makoctl list -j 2>/dev/null)"
     count="$(printf '%s' "$active" | python3 -c "import json,sys; print(len(json.load(sys.stdin)))" 2>/dev/null)"

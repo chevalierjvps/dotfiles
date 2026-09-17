@@ -1,5 +1,5 @@
 configuration {
-    modi:                "drun,run,window,calc:~/.config/rofi/scripts/calc_mode.sh,wifi:~/.config/rofi/scripts/wifi_mode.sh,bt:~/.config/rofi/scripts/bt_mode.sh,keys:~/.config/rofi/scripts/keys_mode.sh,layout:~/.config/rofi/scripts/layout_mode.sh,notif:~/.config/rofi/scripts/notif_mode.sh";
+    modi:                "drun,run,window,calc:~/.config/rofi/scripts/calc_mode.sh,wifi:~/.config/rofi/scripts/wifi_mode.sh,bt:~/.config/rofi/scripts/bt_mode.sh,keys:~/.config/rofi/scripts/keys_mode.sh,layout:~/.config/rofi/scripts/layout_mode.sh,audio:~/.config/rofi/scripts/audio_mode.sh,notif:~/.config/rofi/scripts/notif_mode.sh";
     show-icons:          true;
     icon-theme:          "Papirus-Dark";
     display-drun:        "󰀻 apps";
@@ -10,6 +10,7 @@ configuration {
     display-bt:          "󰂯 bt";
     display-keys:        "󰌌 keys";
     display-layout:      "󰕰 layout";
+    display-audio:       "󰕾 audio";
     display-notif:       "󰂚 notif";
     drun-display-format: "{name}";
     sidebar-mode:        true;

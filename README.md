@@ -1,107 +1,138 @@
-# Amberglow
+<div align="center">
 
-A retro CRT/phosphor rice for [MangoWM](https://github.com/mangowm/mango), an
-Arch/CachyOS wlroots compositor. Warm amber-on-dark palette, sharp corners,
-solid panels (no glassmorphism), DepartureMono Nerd Font throughout.
+# ⚡ AMBERGLOW ⚡
+### Retro CRT Phosphor Rice for MangoWM & Arch Linux
 
-This repo tracks *only* the rice files, out of an otherwise-untracked `$HOME`
-— see `.gitignore` if you're wondering why `git status` looks empty on
-everything else.
+[![OS](https://img.shields.io/badge/OS-Arch_Linux_%2F_CachyOS-1793d1?style=for-the-badge&logo=arch-linux&logoColor=white)](https://archlinux.org/)
+[![Compositor](https://img.shields.io/badge/Compositor-MangoWM-e8952d?style=for-the-badge&logo=wayland&logoColor=white)](https://github.com/DreamMaoMao/mangowc)
+[![Bar](https://img.shields.io/badge/Bar-Waybar-241d15?style=for-the-badge&logo=rust&logoColor=e8952d)](https://github.com/Alexays/Waybar)
+[![Launcher](https://img.shields.io/badge/Launcher-Rofi_Wayland-e8952d?style=for-the-badge&logo=gnome-terminal&logoColor=white)](https://github.com/lbonn/rofi)
+[![Font](https://img.shields.io/badge/Font-DepartureMono_Nerd_Font-e0d4b0?style=for-the-badge&logo=terminal&logoColor=1a150f)](https://departuremono.com/)
 
-![rofi launcher with the mode-switcher tabs (apps, calc, wifi, bluetooth, keybinds, emoji, notifications) and the waybar bar visible above it](screenshots/rofi-launcher.png)
+<br>
 
-## What's here
+<img src="screenshots/rofi-launcher.png" alt="Amberglow Rice Preview — Rofi Launcher & Waybar" width="960px" style="border: 2px solid #e8952d; border-radius: 4px;" />
 
-| Path | What |
-| --- | --- |
-| `.config/mango/` | Compositor config: binds, rules, monitors, autostart, per-device keyboard/input rules |
-| `.config/waybar/mango/` | Bar: launcher, tags, window title, mpris, weather, Pac-Man update-chomper, system tray, notifications, etc. |
-| `.config/rofi/` | Launcher theme + custom script-modes (calc, wifi, bluetooth, keybind cheatsheet, layout picker, notification manager, powermenu, wallpaper picker, clipboard) |
-| `.config/mako/config` | Notification daemon theme + do-not-disturb mode |
-| `.config/environment.d/` | Session-wide env fixes (MangoHud Vulkan-layer crash workaround, cursor theme, a Chromium GPU-crash workaround for ZapZap) |
-| `.local/share/applications/` | `.desktop` overrides that bake in browser launch flags (Chromium theme extension, GPU flags) |
-| `.local/share/chrome-themes/` | Unpacked Chromium "theme" extensions (Helium, Brave) — loaded via `--load-extension`, no manual install needed |
-| `browser-themes/` | `userChrome.css`/`user.js` for Firefox-family browsers (Zen, LibreWolf) — copied out of the live profile since profile dirs are random per-install hashes, not symlinked |
-| `ly-theme/config.ini` | Themed `ly` display-manager config (lives at `/etc/ly/config.ini`, root-owned, so it's kept here for reference/reapplication) |
+<br>
 
-## Installing on a new machine
+*Warm amber phosphor glow • Crisp zero-radius geometry • Solid CRT aesthetic • Zero emojis • Pure typography*
 
-1. **Packages** (Arch/CachyOS names): `mangowm waybar rofi mako swaybg swayidle
-   swaylock kitty nautilus brightnessctl playerctl wireplumber pipewire-pulse
-   jq python3 pacman-contrib` plus AUR: `ly nerd-fonts-departure-mono
-   bibata-cursor-theme-bin papirus-icon-theme-git` (or whatever provides
-   `Bibata-Modern-Amber` and `Papirus-Dark`). `paru`/`yay` if you want the
-   Pac-Man waybar module to also count AUR updates.
+</div>
 
-2. **Clone into place** (this repo *is* meant to be your `$HOME`, or cherry-pick
-   the paths above into an existing one):
+---
 
-   ```sh
-   git clone <this-repo-url> ~/amberglow-dotfiles
-   cd ~/amberglow-dotfiles
-   cp -r .config/mango .config/waybar .config/rofi .config/mako ~/.config/
-   mkdir -p ~/.config/environment.d
-   cp .config/environment.d/*.conf ~/.config/environment.d/
-   mkdir -p ~/.local/share/applications ~/.local/share/chrome-themes
-   cp .local/share/applications/*.desktop ~/.local/share/applications/
-   cp -r .local/share/chrome-themes/* ~/.local/share/chrome-themes/
-   chmod +x ~/.config/mango/scripts/*.sh ~/.config/mango/autostart.sh \
-            ~/.config/waybar/mango/scripts/*.sh ~/.config/rofi/scripts/*.sh
-   ```
+## 🌟 Highlights & Philosophy
 
-3. **Fix hardcoded paths.** The `.desktop` overrides and a couple of scripts
-   hardcode `/home/jagermeister/...` — if your username differs, `sed -i
-   "s#/home/jagermeister#$HOME#g"` across `.local/share/applications/*.desktop`
-   and `.config/mango/bind.conf`.
+- **Retro CRT Phosphor Palette:** Deep obsidian (`#16120c`) paired with vibrant amber (`#e8952d`), dim bronze (`#8a7d63`), and phosphor highlight (`#ffaa40`).
+- **Strictly Zero Emojis:** Standardized on **DepartureMono Nerd Font** glyphs and concise retro terminal labels.
+- **Audio Feedback & Synchronous OSD:** Instant sound feedback tick when adjusting volume via media keys, with a compact progress-bar OSD rendered via Mako.
+- **Dedicated Audio Hub & Pavucontrol:** Instant access to Pavucontrol (`SUPER+A`) or Rofi Audio Selector (`SUPER+Shift+A`) to switch output sinks and input sources on the fly.
+- **First-Class Cedilla (`ç`) on Wayland:** Full support for `us-intl` dead keys across Chromium, Brave, and Electron apps powered by Fcitx5, `.XCompose`, and Ozone Wayland IME.
+- **Clean Monorepo Tracking:** Repo tracks only rice files out of `$HOME` via an explicit allowlist `.gitignore`.
 
-4. **Per-device keyboard rules** in `.config/mango/config.conf` (the
-   `devicerule=name:...` lines) are pinned to *this machine's* exact device
-   names (`AT Translated Set 2 keyboard`, `ROYUAN Gaming Keyboard`). Run
-   `mmsg get all-devices` on the new machine and update the names, or delete
-   those two lines if you don't need per-keyboard layouts.
+---
 
-5. **Browser themes:**
-   - **Helium / Brave** (Chromium-based): already wired via `--load-extension`
-     in the `.desktop` overrides — nothing else to do once the
-     `chrome-themes/` files are in place.
-   - **Zen / LibreWolf** (Firefox-based): find your actual profile dir
-     (`~/.zen/<hash>.Default*` or
-     `~/.config/librewolf/librewolf/<hash>.default*`), then:
-     ```sh
-     mkdir -p <profile-dir>/chrome
-     cp browser-themes/zen/userChrome.css <profile-dir>/chrome/        # Zen
-     cp browser-themes/librewolf/* <profile-dir>/chrome/ ; \
-       cp browser-themes/librewolf/user.js <profile-dir>/               # LibreWolf
-     ```
-     Both need `toolkit.legacyUserProfileCustomizations.stylesheets = true`
-     (LibreWolf's `user.js` here already sets it; for Zen, set it in
-     `about:config`).
+## 🗂️ What's Included
 
-6. **`ly`:** `sudo cp ly-theme/config.ini /etc/ly/config.ini` (back up the
-   original first: `sudo cp /etc/ly/config.ini /etc/ly/config.ini.bak`).
+| Path | Description |
+| :--- | :--- |
+| [`.config/mango/`](.config/mango/) | Compositor config: binds, window rules, monitors, autostart, per-device keyboard rules |
+| [`.config/waybar/mango/`](.config/waybar/mango/) | Top bar: tags, active title, media, weather, Pac-Man update chomper, tray, notifications |
+| [`.config/rofi/`](.config/rofi/) | Rofi launcher theme + 9 custom script modes (apps, run, win, calc, wifi, bt, keys, layout, audio, notif) |
+| [`.config/mako/config`](.config/mako/config) | Notification daemon theme with retro amber progress bar & volume OSD widget |
+| [`.config/environment.d/`](.config/environment.d/) | Session environment fixes (Fcitx5 input method, MangoHud crash workaround, cursor theme) |
+| [`.local/bin/`](.local/bin/) | Helper scripts and wrapper for Brave Nightly multiline flag parsing |
+| [`.local/share/applications/`](.local/share/applications/) | `.desktop` entries with baked-in Wayland flags and theme extensions |
+| [`.local/share/chrome-themes/`](.local/share/chrome-themes/) | Unpacked Chromium amber theme extensions for Brave & Helium |
+| [`browser-themes/`](browser-themes/) | `userChrome.css` and `user.js` for Zen Browser and LibreWolf |
+| [`ly-theme/config.ini`](ly-theme/config.ini) | Themed `ly` display manager configuration |
 
-7. Log out and back in (or reboot) so `environment.d` and the display manager
-   pick everything up, then `mmsg dispatch reload_config` if you tweak
-   anything live afterward.
+---
 
-## Keybinds
+## ⌨️ Keybindings
 
-~90 binds total, all in `.config/mango/bind.conf` with section comments. The
-notable custom ones:
+Over 90 binds defined in [`.config/mango/bind.conf`](.config/mango/bind.conf). The most notable shortcuts:
 
-| Key | Action |
-| --- | --- |
-| `SUPER+D` / `SUPER+Ctrl+Return` | rofi launcher (apps, run, windows, calc, wifi, bluetooth, keybind cheatsheet, layout picker, notifications — cycle with Shift+Tab) |
-| `SUPER+V` | clipboard history (with image thumbnails) |
-| `SUPER+Shift+Q` | power menu |
-| `SUPER+Shift+W` | wallpaper picker |
-| `SUPER+Shift+E` | Nautilus scratchpad (toggle) |
-| `SUPER+Shift+T` | kitty scratchpad (toggle) |
-| `SUPER+E` | file manager |
-| `SUPER+W` / `SUPER+B` | browser |
-| `SUPER+J` | Ryotunes, floating and centered |
-| `Print` / `SUPER+Print` / `SUPER+Shift+Print` | screenshots — always saved to `~/Pictures/Screenshots`, not just clipboard |
+| Keybinding | Action |
+| :--- | :--- |
+| `SUPER + D` / `SUPER + Ctrl + Return` | **Rofi Launcher** (cycle modes with `Tab` / `Shift+Tab`) |
+| `SUPER + A` | **PulseAudio Volume Control (Pavucontrol GUI)** (floating) |
+| `SUPER + Shift + A` | **Rofi Audio Hub** (switch sinks, sources & volume presets) |
+| `SUPER + V` | **Clipboard History** (with real image thumbnail previews) |
+| `SUPER + Y` | **Layout Switcher** (dynamic cycle across 14 MangoWM layouts) |
+| `SUPER + Shift + Q` | **Power Menu** (Lock, Suspend, Reboot, Power Off, Log Out) |
+| `SUPER + Shift + W` | **Wallpaper Picker** (interactive image thumbnail grid) |
+| `SUPER + Shift + Y` | **Yazi File Manager** (dedicated dropdown scratchpad) |
+| `SUPER + Shift + T` | **Kitty Terminal** (dedicated dropdown scratchpad) |
+| `SUPER + E` | **Nautilus File Manager** |
+| `SUPER + W` / `SUPER + B` | **Brave Browser** (pre-loaded with Amberglow theme) |
+| `SUPER + O` | **Obsidian** (knowledge hub) |
+| `SUPER + J` | **Ryotunes** (floating centered music player) |
+| `SUPER + Space` | **Toggle Floating Window** |
+| `SUPER + F` | **Toggle Fullscreen** |
+| `SUPER + Tab` | **Toggle Overview** |
+| `Print` / `SUPER + Print` | **Screenshots** (saved directly to `~/Pictures/Screenshots`) |
+| `XF86AudioRaiseVolume` | **Volume +5%** (sound tick feedback + retro Mako OSD) |
+| `XF86AudioLowerVolume` | **Volume -5%** (sound tick feedback + retro Mako OSD) |
+| `XF86AudioMute` | **Toggle Audio Mute** (with OSD status) |
+| `XF86AudioMicMute` | **Toggle Microphone Mute** (with OSD status) |
 
-Everything else (window management, tags/workspaces, media keys, monitor
-toggling) mirrors what you'd expect from a `niri`-style setup — see the file
-itself, it's commented section by section.
+---
+
+## 🔊 Audio & OSD Feedback
+
+Volume keys trigger [`~/.config/mango/scripts/volume.sh`](.config/mango/scripts/volume.sh):
+1. Adjusts volume using `wpctl`.
+2. Emits immediate audio feedback tick using `canberra-gtk-play` or `pw-play` (`audio-volume-change.oga`).
+3. Sends a synchronous Mako notification (`-h string:synchronous:volume -h int:value:<pct>`) that updates smoothly in-place without flooding the notification queue.
+
+---
+
+## ⌨️ Cedilla (`ç`) on Wayland / US-Intl
+
+For users with US-International keyboard layouts (`' + c = ç`):
+- **Daemon:** Fcitx5 autostarted via [`.config/mango/autostart.sh`](.config/mango/autostart.sh).
+- **Environment:** `INPUT_METHOD`, `GTK_IM_MODULE`, `QT_IM_MODULE`, `XMODIFIERS`, and `XCOMPOSEFILE` exported to DBus and systemd in [`.config/mango/env.conf`](.config/mango/env.conf).
+- **Compose Table:** Custom [`.XCompose`](.XCompose) file mapping `<dead_acute> + c` to `ç`.
+- **Browser Flags:** Automated Wayland IME integration for Brave, Chrome, Chromium, and Electron:
+  ```text
+  --ozone-platform=wayland
+  --enable-wayland-ime
+  --wayland-text-input-version=3
+  ```
+
+---
+
+## 🚀 Installation
+
+```sh
+# 1. Clone the repository
+git clone https://github.com/chevalierjvps/dotfiles.git ~/amberglow-dotfiles
+cd ~/amberglow-dotfiles
+
+# 2. Copy configurations to ~/.config
+cp -r .config/mango .config/waybar .config/rofi .config/mako ~/.config/
+mkdir -p ~/.config/environment.d
+cp .config/environment.d/*.conf ~/.config/environment.d/
+cp .config/*flags.conf ~/.config/ 2>/dev/null || true
+cp .XCompose ~/
+
+# 3. Copy helper binaries & application shortcuts
+mkdir -p ~/.local/bin ~/.local/share/applications ~/.local/share/chrome-themes
+cp -r .local/bin/* ~/.local/bin/
+cp .local/share/applications/*.desktop ~/.local/share/applications/
+cp -r .local/share/chrome-themes/* ~/.local/share/chrome-themes/
+
+# 4. Ensure scripts are executable
+chmod +x ~/.config/mango/scripts/*.sh ~/.config/mango/autostart.sh \
+         ~/.config/waybar/mango/scripts/*.sh ~/.config/rofi/scripts/*.sh \
+         ~/.local/bin/*
+```
+
+---
+
+<div align="center">
+
+Crafted with care by **chevalierjvps**
+
+</div>

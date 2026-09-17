@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
-# Rofi script-mode: Wi-Fi (nmcli). Adicionar ao modi do rofi como
-# "wifi:~/.config/rofi/scripts/wifi_mode.sh"
+# Rofi script-mode: Wi-Fi (nmcli)
 set -u
 
 ICON_LOCK=$''
@@ -12,12 +11,12 @@ list() {
     local radio
     radio="$(nmcli radio wifi)"
     if [[ "$radio" == "enabled" ]]; then
-        printf 'Wi-Fi: ligado (clique pra desligar)\0info\x1f__toggle_radio\n'
+        printf 'Wi-Fi: Enabled (click to turn off)\0info\x1f__toggle_radio\n'
     else
-        printf 'Wi-Fi: desligado (clique pra ligar)\0info\x1f__toggle_radio\n'
+        printf 'Wi-Fi: Disabled (click to turn on)\0info\x1f__toggle_radio\n'
         return
     fi
-    printf 'Escanear novamente\0info\x1f__rescan\n'
+    printf 'Rescan networks\0info\x1f__rescan\n'
 
     nmcli -t -f IN-USE,SIGNAL,SECURITY,SSID dev wifi list 2>/dev/null | while IFS=: read -r inuse signal sec ssid; do
         [[ -z "$ssid" ]] && continue
@@ -54,7 +53,7 @@ if [[ "$retv" == "1" ]]; then
             else
                 sec="$(nmcli -t -f SECURITY,SSID dev wifi list 2>/dev/null | awk -F: -v s="$ssid" '$2==s{print $1}')"
                 if [[ -n "$sec" && "$sec" != "--" ]]; then
-                    pass="$(rofi -dmenu -password -p "Senha: $ssid" -theme ~/.config/rofi/amberglow.rasi)"
+                    pass="$(rofi -dmenu -password -p "Password for $ssid" -theme ~/.config/rofi/amberglow.rasi)"
                     [[ -z "$pass" ]] && { list; exit 0; }
                     nmcli dev wifi connect "$ssid" password "$pass" >/dev/null 2>&1
                 else

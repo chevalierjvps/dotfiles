@@ -8,10 +8,20 @@ border-radius=0
 background-color=#1a150fee
 text-color=#e0d4b0
 border-color=#e8952d
-progress-color=over #241d15
+progress-color=over #e8952d
 default-timeout=6000
 layer=top
 anchor=top-right
+
+[app-name=volume]
+width=260
+height=60
+border-color=#e8952d
+text-color=#ffaa40
+background-color=#1a150ff8
+progress-color=over #e8952d
+anchor=top-right
+default-timeout=1200
 
 [urgency=low]
 border-color=#4a3f30

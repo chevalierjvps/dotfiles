@@ -1,23 +1,23 @@
 #!/usr/bin/env bash
-# Rofi script-mode: troca o layout do monitor focado (mmsg dispatch setlayout).
+# Rofi script-mode: Switch layout for focused monitor (mmsg dispatch setlayout)
 set -u
 
-# símbolo · nome interno · rótulo
+# symbol | internal_name | label
 LAYOUTS=(
-    "T|tile|Tile (mestre + pilha)"
+    "T|tile|Tile (master + stack)"
     "S|scroller|Scroller"
     "G|grid|Grid"
-    "M|monocle|Monocle (janela única)"
-    "K|deck|Deck (cartas)"
-    "CT|center_tile|Centralizado"
-    "RT|right_tile|Mestre à direita"
-    "VS|vertical_scroller|Scroller vertical"
-    "VT|vertical_tile|Tile vertical"
-    "VG|vertical_grid|Grid vertical"
-    "VK|vertical_deck|Deck vertical"
+    "M|monocle|Monocle (single window)"
+    "K|deck|Deck (stacked cards)"
+    "CT|center_tile|Center Tile"
+    "RT|right_tile|Right Tile"
+    "VS|vertical_scroller|Vertical Scroller"
+    "VT|vertical_tile|Vertical Tile"
+    "VG|vertical_grid|Vertical Grid"
+    "VK|vertical_deck|Vertical Deck"
     "DW|dwindle|Dwindle"
     "F|fair|Fair"
-    "VF|vertical_fair|Fair vertical"
+    "VF|vertical_fair|Vertical Fair"
 )
 
 current_symbol() {

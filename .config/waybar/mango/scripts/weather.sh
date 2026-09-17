@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
-# Clima via wttr.in, ícone Nerd Font conforme condição + dia/noite.
+# Weather via wttr.in, Nerd Font icon by condition + day/night
 set -u
 
 json="$(curl -s --max-time 5 'wttr.in/?format=j1')"
 if [[ -z "$json" ]]; then
-    echo '{"text":"","tooltip":"clima: sem conexão"}'
+    echo '{"text":"","tooltip":"weather: offline"}'
     exit 0
 fi
 
@@ -19,7 +19,7 @@ try:
     feels = cur["FeelsLikeC"]
     desc = cur["weatherDesc"][0]["value"]
 except Exception:
-    print(json.dumps({"text": "", "tooltip": "clima: erro ao ler dados"}))
+    print(json.dumps({"text": "", "tooltip": "weather: data fetch error"}))
     sys.exit(0)
 
 desc_l = desc.lower()
@@ -50,7 +50,7 @@ for keywords, day_cp, night_cp in table:
 
 result = {
     "text": f"{chr(icon_cp)}  {temp}°C",
-    "tooltip": f"{desc} · sensação {feels}°C",
+    "tooltip": f"{desc} · feels like {feels}°C",
 }
 print(json.dumps(result, ensure_ascii=False))
 PY

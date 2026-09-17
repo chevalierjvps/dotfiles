@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
-# Rofi script-mode: Bluetooth (bluetoothctl). Adicionar ao modi do rofi como
-# "bt:~/.config/rofi/scripts/bt_mode.sh"
+# Rofi script-mode: Bluetooth (bluetoothctl)
 set -u
 
 ICON_ON=$'󰂱'
@@ -12,18 +11,18 @@ list() {
     local powered
     powered="$(bluetoothctl show | awk -F': ' '/Powered/{print $2}')"
     if [[ "$powered" == "yes" ]]; then
-        printf '%s Bluetooth: ligado (clique pra desligar)\0info\x1f__toggle_power\n' "$ICON_ON"
+        printf '%s Bluetooth: Enabled (click to turn off)\0info\x1f__toggle_power\n' "$ICON_ON"
     else
-        printf '%s Bluetooth: desligado (clique pra ligar)\0info\x1f__toggle_power\n' "$ICON_OFF"
+        printf '%s Bluetooth: Disabled (click to turn on)\0info\x1f__toggle_power\n' "$ICON_OFF"
         return
     fi
-    printf 'Escanear novos dispositivos (10s)\0info\x1f__scan\n'
+    printf 'Scan for new devices (10s)\0info\x1f__scan\n'
 
     bluetoothctl devices Paired 2>/dev/null | while read -r _ mac name; do
         local connected
         connected="$(bluetoothctl info "$mac" 2>/dev/null | awk -F': ' '/^\s*Connected/{print $2}')"
         if [[ "$connected" == "yes" ]]; then
-            printf '%s %s (conectado)\0info\x1f%s\n' "$ICON_DEVICE" "$name" "$mac"
+            printf '%s %s (connected)\0info\x1f%s\n' "$ICON_DEVICE" "$name" "$mac"
         else
             printf '%s %s\0info\x1f%s\n' "$ICON_DEVICE" "$name" "$mac"
         fi

@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
-# Sininho de notificações: contagem de ativas + estado do Não Perturbe.
-# Streaming contínuo (mesmo padrão de tags.sh/mic.sh) — makoctl não tem um
-# comando "subscribe", então poll leve a cada 2s.
+# Notification bell: active count + Do Not Disturb status
 set -u
 
 bell=$''
@@ -12,11 +10,11 @@ while true; do
     count="${count:-0}"
 
     if makoctl mode 2>/dev/null | grep -qx "do-not-disturb"; then
-        printf '{"text":"%s","tooltip":"Não Perturbe ligado","class":"dnd"}\n' "$bell_slash"
+        printf '{"text":"%s","tooltip":"Do Not Disturb: ON","class":"dnd"}\n' "$bell_slash"
     elif (( count > 0 )); then
-        printf '{"text":"%s %d","tooltip":"%d notificação(ões)","class":"active"}\n' "$bell" "$count" "$count"
+        printf '{"text":"%s %d","tooltip":"%d active notification(s)","class":"active"}\n' "$bell" "$count" "$count"
     else
-        printf '{"text":"%s","tooltip":"sem notificações","class":"empty"}\n' "$bell"
+        printf '{"text":"%s","tooltip":"No notifications","class":"empty"}\n' "$bell"
     fi
 
     sleep 2

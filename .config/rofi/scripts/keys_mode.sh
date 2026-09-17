@@ -1,13 +1,11 @@
 #!/usr/bin/env bash
-# Rofi script-mode: cheatsheet de atalhos, lido direto do bind.conf (sempre
-# atualizado, sem lista duplicada pra manter em dia). Selecionar copia a
-# combinação de teclas pro clipboard.
+# Rofi script-mode: Keybinds cheatsheet, parsed directly from bind.conf
 set -u
 
 bindfile="$HOME/.config/mango/bind.conf"
 
 list() {
-    echo -en "\0prompt\x1fatalhos\n"
+    echo -en "\0prompt\x1fkeys\n"
     local section=""
     while IFS= read -r line; do
         if [[ "$line" =~ ^#[[:space:]]*───[[:space:]]*(.+[^─])[[:space:]]*───[[:space:]]*$ ]]; then
