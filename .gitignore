@@ -17,6 +17,9 @@
 # ── mako (notifications) ──
 !/.config/mako/
 
+# ── alacritty (terminal) ──
+!/.config/alacritty/
+
 # ── systemd environment.d fixes ──
 !/.config/environment.d/
 /.config/environment.d/*

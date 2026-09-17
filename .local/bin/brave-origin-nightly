@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 set -eo pipefail
 
+export DISABLE_MANGOHUD=1
+unset MANGOHUD 2>/dev/null || true
+
 XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}"
 
 flags=()

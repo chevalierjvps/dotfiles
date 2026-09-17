@@ -40,6 +40,7 @@
 | [`.config/waybar/mango/`](.config/waybar/mango/) | Top bar: tags, active title, media, weather, Pac-Man update chomper, tray, notifications |
 | [`.config/rofi/`](.config/rofi/) | Rofi launcher theme + 9 custom script modes (apps, run, win, calc, wifi, bt, keys, layout, audio, notif) |
 | [`.config/mako/config`](.config/mako/config) | Notification daemon theme with retro amber progress bar & volume OSD widget |
+| [`.config/alacritty/`](.config/alacritty/) | Alacritty terminal configuration with subtle blur transparency and Amberglow palette |
 | [`.config/environment.d/`](.config/environment.d/) | Session environment fixes (Fcitx5 input method, MangoHud crash workaround, cursor theme) |
 | [`.local/bin/`](.local/bin/) | Helper scripts and wrapper for Brave Nightly multiline flag parsing |
 | [`.local/share/applications/`](.local/share/applications/) | `.desktop` entries with baked-in Wayland flags and theme extensions |
