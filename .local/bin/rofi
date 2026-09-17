@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+# Wrapper to ensure Rofi and applications launched from it do not inherit
+# accidental MangoHud performance overlays.
+unset MANGOHUD 2>/dev/null || true
+export DISABLE_MANGOHUD=1
+exec /usr/bin/rofi "$@"

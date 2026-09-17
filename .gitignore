@@ -35,12 +35,17 @@
 !/.config/*flags.conf
 !/.config/*flags.conf*
 
+# ── MangoHud config (no_display=1) ──
+!/.config/MangoHud/
+
 # ── custom bin overrides ──
 !/.local/
 /.local/*
 !/.local/bin/
 /.local/bin/*
 !/.local/bin/brave-origin-nightly
+!/.local/bin/rofi
+!/.local/bin/kitty
 
 # ── app launcher overrides (.desktop) ──
 !/.local/share/
