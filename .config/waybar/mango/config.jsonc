@@ -98,10 +98,22 @@
     "spacing": 8
   },
   "network": {
-    "format-wifi": "  {essid} ({signalStrength}%)",
-    "format-ethernet": " Wired",
-    "format-disconnected": "  Offline",
+    "format-wifi": "{icon}  {signalStrength}%",
+    "format-ethernet": "󰈀  100%",
+    "format-disconnected": "󰤮  off",
+    "format-disabled": "󰤮  off",
+    "format-icons": [
+      "󰤯",
+      "󰤟",
+      "󰤢",
+      "󰤥",
+      "󰤨"
+    ],
     "tooltip-format": "{ifname}: {ipaddr}/{cidr}",
+    "tooltip-format-wifi": "{essid} ({signalStrength}%) · {ipaddr}",
+    "tooltip-format-ethernet": "Wired ({ifname}) · {ipaddr}",
+    "tooltip-format-disconnected": "Disconnected",
+    "tooltip-format-disabled": "WiFi disabled",
     "on-click": "kitty --class nmtui-float -e nmtui",
     "on-click-right": "nmcli radio wifi toggle"
   },
