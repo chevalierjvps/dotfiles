@@ -10,7 +10,7 @@ logout="  Sair"
 
 options="$lock\n$suspend\n$reboot\n$shutdown\n$logout"
 
-chosen="$(printf '%b' "$options" | rofi -dmenu -i -p "Energia" -theme ~/.config/rofi/powermenu.rasi)"
+chosen="$(printf '%b' "$options" | rofi -dmenu -i -p "󰐥  Energia" -theme ~/.config/rofi/powermenu.rasi)"
 
 case "$chosen" in
     "$shutdown") systemctl poweroff ;;

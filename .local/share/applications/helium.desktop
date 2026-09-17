@@ -3,7 +3,7 @@ Version=1.0
 Name=Helium Browser
 GenericName=Web Browser
 Comment=Access the Internet
-Exec=helium-browser --load-extension=/home/jagermeister/.local/share/chrome-themes/amberglow-helium %U
+Exec=helium-browser --ozone-platform=x11 --load-extension=/home/jagermeister/.local/share/chrome-themes/amberglow-helium %U
 StartupNotify=true
 Terminal=false
 Icon=helium-browser
@@ -14,8 +14,8 @@ Actions=new-window;new-private-window;
 
 [Desktop Action new-window]
 Name=New Window
-Exec=helium-browser --load-extension=/home/jagermeister/.local/share/chrome-themes/amberglow-helium
+Exec=helium-browser --ozone-platform=x11 --load-extension=/home/jagermeister/.local/share/chrome-themes/amberglow-helium
 
 [Desktop Action new-private-window]
 Name=New Incognito Window
-Exec=helium-browser --load-extension=/home/jagermeister/.local/share/chrome-themes/amberglow-helium --incognito
+Exec=helium-browser --ozone-platform=x11 --load-extension=/home/jagermeister/.local/share/chrome-themes/amberglow-helium --incognito

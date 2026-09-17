@@ -17,7 +17,7 @@ build_menu() {
     done
 }
 
-chosen="$(build_menu | rofi -dmenu -i -p "Wallpaper" -theme ~/.config/rofi/wallpaper.rasi)"
+chosen="$(build_menu | rofi -dmenu -i -p "󰸉  Wallpaper" -theme ~/.config/rofi/wallpaper.rasi)"
 [[ -z "$chosen" ]] && exit 0
 
 new_path="$wall_dir/$chosen"

@@ -1,14 +1,21 @@
 configuration {
-    modi:                "drun,run,window,🧮:~/.config/rofi/scripts/calc_mode.sh,📶:~/.config/rofi/scripts/wifi_mode.sh,🔵:~/.config/rofi/scripts/bt_mode.sh,⌨:~/.config/rofi/scripts/keys_mode.sh,😀:~/.config/rofi/scripts/emoji_mode.sh,🔔:~/.config/rofi/scripts/notif_mode.sh";
+    modi:                "drun,run,window,calc:~/.config/rofi/scripts/calc_mode.sh,wifi:~/.config/rofi/scripts/wifi_mode.sh,bt:~/.config/rofi/scripts/bt_mode.sh,keys:~/.config/rofi/scripts/keys_mode.sh,layout:~/.config/rofi/scripts/layout_mode.sh,notif:~/.config/rofi/scripts/notif_mode.sh";
     show-icons:          true;
     icon-theme:          "Papirus-Dark";
-    display-drun:        "🚀";
-    display-run:         "⚡";
-    display-window:      "🪟";
+    display-drun:        "󰀻 apps";
+    display-run:         " run";
+    display-window:      " win";
+    display-calc:        "󰪚 calc";
+    display-wifi:        "󰤨 wifi";
+    display-bt:          "󰂯 bt";
+    display-keys:        "󰌌 keys";
+    display-layout:      "󰕰 layout";
+    display-notif:       "󰂚 notif";
     drun-display-format: "{name}";
     sidebar-mode:        true;
     disable-history:     false;
     matching:            "fuzzy";
+    scroll-method:       0;
 }
 
 @theme "amberglow"

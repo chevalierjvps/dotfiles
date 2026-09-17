@@ -23,10 +23,23 @@
 !/.config/environment.d/mangohud-disable.conf
 !/.config/environment.d/cursor-theme.conf
 !/.config/environment.d/zapzap-gpu-fix.conf
+!/.config/environment.d/10-fcitx5.conf
 
-# ── app launcher overrides (.desktop) ──
+# ── XCompose (cedilla fix) ──
+!/.XCompose
+
+# ── Chromium/Electron Wayland & Cedilla flags ──
+!/.config/*flags.conf
+!/.config/*flags.conf*
+
+# ── custom bin overrides ──
 !/.local/
 /.local/*
+!/.local/bin/
+/.local/bin/*
+!/.local/bin/brave-origin-nightly
+
+# ── app launcher overrides (.desktop) ──
 !/.local/share/
 /.local/share/*
 !/.local/share/applications/
@@ -36,6 +49,7 @@
 !/.local/share/applications/com.brave.Origin.nightly.desktop
 !/.local/share/applications/com.rtosta.zapzap.desktop
 !/.local/share/chrome-themes/
+*.pak
 
 # ── browser chrome themes (copied out of the live profile — profile dirs
 # are random per-install hashes, so these are NOT symlinked into place) ──

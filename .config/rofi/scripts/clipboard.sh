@@ -33,6 +33,6 @@ build_menu() {
     done
 }
 
-chosen="$(build_menu | rofi -dmenu -show-icons -i -p "Clipboard" -theme ~/.config/rofi/amberglow.rasi)"
+chosen="$(build_menu | rofi -dmenu -show-icons -i -p "󰅌  Clipboard" -theme ~/.config/rofi/amberglow.rasi)"
 [[ -z "$chosen" ]] && exit 0
 printf '%s\n' "$chosen" | cliphist decode | wl-copy

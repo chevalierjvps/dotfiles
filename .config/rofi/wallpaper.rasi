@@ -2,27 +2,36 @@
 @import "amberglow.rasi"
 
 window {
-    width:    900px;
+    width:    920px;
     location: center;
+}
+
+mainbox {
+    children: [ "inputbar", "listview" ];
+    padding:  14px;
+    spacing:  12px;
 }
 
 listview {
     lines:        2;
     columns:      4;
-    spacing:      10px;
+    spacing:      12px;
     cycle:        true;
     scrollbar:    false;
 }
 
 element {
     orientation:   vertical;
-    padding:       6px;
+    padding:       8px;
     border:        1px solid;
-    border-color:  #4a3f30;
+    border-color:  @border-col;
+    border-radius: 0px;
 }
 
 element selected {
-    border-color: #e8952d;
+    background-color: @bg-focus;
+    border-color:     @amber;
+    text-color:       @amber-bright;
 }
 
 element-icon {
@@ -32,6 +41,6 @@ element-icon {
 
 element-text {
     horizontal-align: 0.5;
-    padding:          4px 0 0 0;
-    font:             "DepartureMono Nerd Font Mono 9";
+    padding:          6px 0 0 0;
+    font:             "DepartureMono Nerd Font Mono 10";
 }

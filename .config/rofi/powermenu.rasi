@@ -2,12 +2,27 @@
 @import "amberglow.rasi"
 
 window {
-    width:    280px;
+    width:    300px;
     location: center;
 }
 
 mainbox {
-    children: ["listview"];
+    children: [ "inputbar", "listview" ];
+    padding:  12px;
+    spacing:  8px;
+}
+
+inputbar {
+    children:         [ "prompt" ];
+    padding:          6px 10px;
+    background-color: transparent;
+    border:           0px;
+}
+
+prompt {
+    font:             "DepartureMono Nerd Font Mono Bold 12";
+    text-color:       @amber-bright;
+    horizontal-align: 0.5;
 }
 
 listview {

@@ -1,19 +1,23 @@
-/* Amberglow — mesma paleta do mango/waybar */
+/* Amberglow — retro CRT amber phosphor rice (no emojis) */
 
 * {
-    bg:         #1a150fee;
-    bg-alt:     #241d15ee;
-    border-col: #4a3f30;
-    amber:      #e8952d;
-    green:      #9dbb5c;
-    red:        #d9483d;
-    cream:      #d8c48a;
-    fg:         #e0d4b0;
-    fg-dim:     #8a7d63;
+    bg:           #16120cee;
+    bg-alt:       #211b13ee;
+    bg-focus:     #2b2217ee;
+    border-col:   #4a3a24;
+    border-focus: #e8952d;
+    amber:        #e8952d;
+    amber-dim:    #aa6c1f;
+    amber-bright: #ffaa40;
+    green:        #9dbb5c;
+    red:          #d9483d;
+    cream:        #d8c48a;
+    fg:           #e0d4b0;
+    fg-dim:       #8a7d63;
 
     background-color: transparent;
     text-color:       @fg;
-    font:             "DepartureMono Nerd Font Mono 12";
+    font:             "DepartureMono Nerd Font Mono 11";
 }
 
 window {
@@ -21,7 +25,7 @@ window {
     border:           2px;
     border-color:     @amber;
     border-radius:    0px;
-    width:            600px;
+    width:            680px;
     location:         center;
     transparency:     "real";
 }
@@ -30,7 +34,7 @@ mainbox {
     background-color: transparent;
     padding:          14px;
     spacing:          12px;
-    children:         ["inputbar", "message", "listview", "mode-switcher"];
+    children:         [ "inputbar", "message", "listview", "mode-switcher" ];
 }
 
 mode-switcher {
@@ -43,13 +47,17 @@ button {
     text-color:       @fg-dim;
     border:           1px;
     border-color:     @border-col;
-    padding:          6px 4px;
+    border-radius:    0px;
+    padding:          5px 7px;
+    cursor:           pointer;
+    horizontal-align: 0.5;
 }
 
 button selected {
     background-color: @amber;
-    text-color:       #1a150f;
+    text-color:       #16120c;
     border-color:     @amber;
+    font:             "DepartureMono Nerd Font Mono Bold 11";
 }
 
 inputbar {
@@ -57,30 +65,49 @@ inputbar {
     border:           1px;
     border-color:     @border-col;
     border-radius:    0px;
-    padding:          10px 14px;
-    spacing:          10px;
-    children:         ["prompt", "entry"];
+    padding:          8px 12px;
+    spacing:          8px;
+    children:         [ "prompt", "entry", "num-filtered-rows", "textbox-num-sep", "num-rows" ];
 }
 
 prompt {
     background-color: transparent;
     text-color:       @amber;
-    font:             "DepartureMono Nerd Font Mono 12";
+    font:             "DepartureMono Nerd Font Mono Bold 11";
 }
 
 entry {
     background-color: transparent;
     text-color:       @fg;
-    placeholder:      "buscar…";
-    placeholder-color: @fg-dim;
+    placeholder:      "digite para filtrar...";
+    placeholder-color:@fg-dim;
+    cursor:           text;
+}
+
+num-filtered-rows, num-rows {
+    text-color:       @amber-dim;
+    expand:           false;
+    vertical-align:   0.5;
+}
+
+textbox-num-sep {
+    text-color:       @border-col;
+    expand:           false;
+    str:              "/";
+    vertical-align:   0.5;
 }
 
 message {
     background-color: @bg-alt;
     border:           1px;
     border-color:     @border-col;
+    border-radius:    0px;
     padding:          8px 12px;
-    text-color:       @fg-dim;
+    text-color:       @cream;
+}
+
+textbox {
+    text-color:       inherit;
 }
 
 listview {
@@ -96,8 +123,10 @@ listview {
 element {
     background-color: transparent;
     text-color:       @fg;
-    padding:          8px 12px;
+    padding:          7px 10px;
     border-radius:    0px;
+    border:           0px 0px 0px 3px;
+    border-color:     transparent;
     orientation:      horizontal;
     spacing:          10px;
 }
@@ -108,21 +137,24 @@ element alternate.urgent {
 }
 
 element selected {
-    background-color: @amber;
-    text-color:       #1a150f;
+    background-color: @bg-focus;
+    text-color:       @amber-bright;
+    border-color:     @amber;
 }
 
 element selected.urgent {
-    background-color: @red;
-    text-color:       #1a150f;
+    background-color: @bg-focus;
+    text-color:       @red;
+    border-color:     @red;
 }
 
 element-icon {
-    size:          1.4em;
+    size:           1.3em;
     vertical-align: 0.5;
 }
 
 element-text {
     vertical-align: 0.5;
+    text-color:     inherit;
     highlight:      bold underline;
 }

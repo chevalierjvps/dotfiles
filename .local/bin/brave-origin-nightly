@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+set -eo pipefail
+
+XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}"
+
+flags=()
+for flags_file in "$XDG_CONFIG_HOME/brave-origin-nightly-flags.conf" "$XDG_CONFIG_HOME/brave-flags.conf"; do
+    if [[ -f "$flags_file" ]]; then
+        while IFS= read -r line || [[ -n "$line" ]]; do
+            # Trim whitespace and comments
+            line="$(echo "$line" | sed 's/#.*//' | xargs)"
+            if [[ -n "$line" ]]; then
+                flags+=("$line")
+            fi
+        done < "$flags_file"
+        break
+    fi
+done
+
+if [[ -z "${CHROME_USER_DATA_DIR}" ]]; then
+    export CHROME_USER_DATA_DIR="$HOME/.config/BraveSoftware/Brave-Origin-Nightly"
+fi
+
+exec "/opt/brave.com/brave-origin-nightly/brave-origin" "${flags[@]}" "$@"

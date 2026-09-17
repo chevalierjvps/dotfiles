@@ -16,7 +16,7 @@ everything else.
 | --- | --- |
 | `.config/mango/` | Compositor config: binds, rules, monitors, autostart, per-device keyboard/input rules |
 | `.config/waybar/mango/` | Bar: launcher, tags, window title, mpris, weather, Pac-Man update-chomper, system tray, notifications, etc. |
-| `.config/rofi/` | Launcher theme + custom script-modes (calc, wifi, bluetooth, keybind cheatsheet, emoji picker, notification manager, powermenu, wallpaper picker, clipboard) |
+| `.config/rofi/` | Launcher theme + custom script-modes (calc, wifi, bluetooth, keybind cheatsheet, layout picker, notification manager, powermenu, wallpaper picker, clipboard) |
 | `.config/mako/config` | Notification daemon theme + do-not-disturb mode |
 | `.config/environment.d/` | Session-wide env fixes (MangoHud Vulkan-layer crash workaround, cursor theme, a Chromium GPU-crash workaround for ZapZap) |
 | `.local/share/applications/` | `.desktop` overrides that bake in browser launch flags (Chromium theme extension, GPU flags) |
@@ -91,7 +91,7 @@ notable custom ones:
 
 | Key | Action |
 | --- | --- |
-| `SUPER+D` / `SUPER+Ctrl+Return` | rofi launcher (apps, run, windows, calc, wifi, bluetooth, keybind cheatsheet, emoji, notifications — cycle with Shift+Tab) |
+| `SUPER+D` / `SUPER+Ctrl+Return` | rofi launcher (apps, run, windows, calc, wifi, bluetooth, keybind cheatsheet, layout picker, notifications — cycle with Shift+Tab) |
 | `SUPER+V` | clipboard history (with image thumbnails) |
 | `SUPER+Shift+Q` | power menu |
 | `SUPER+Shift+W` | wallpaper picker |
