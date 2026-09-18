@@ -41,6 +41,7 @@
 | [`.config/rofi/`](.config/rofi/) | Rofi launcher theme + 9 custom script modes (apps, run, win, calc, wifi, bt, keys, layout, audio, notif) |
 | [`.config/mako/config`](.config/mako/config) | Notification daemon theme with retro amber progress bar & volume OSD widget |
 | [`.config/alacritty/`](.config/alacritty/) | Alacritty terminal configuration with subtle blur transparency and Amberglow palette |
+| [`.config/kitty/`](.config/kitty/) | Kitty terminal configuration with subtle blur transparency and Amberglow palette |
 | [`.config/MangoHud/`](.config/MangoHud/) | MangoHud configuration ensuring overlay remains silent (`no_display=1`) for desktop apps |
 | [`.config/environment.d/`](.config/environment.d/) | Session environment fixes (Fcitx5 input method, MangoHud crash workaround, cursor theme) |
 | [`.local/bin/`](.local/bin/) | Helper scripts and wrappers (Brave, Rofi, Kitty) for environment sanitization and flag parsing |

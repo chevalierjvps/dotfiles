@@ -22,6 +22,9 @@ __pycache__/
 # ── alacritty (terminal) ──
 !/.config/alacritty/
 
+# ── kitty (terminal) ──
+!/.config/kitty/
+
 # ── cava (audio visualizer) ──
 !/.config/cava/
 

@@ -82,6 +82,7 @@ Components / Modules:
                             • rofi       (Rofi launcher themes & custom modal script modes)
                             • mako       (Mako notification daemon & OSD volume widget)
                             • alacritty  (Alacritty terminal emulator theme & font config)
+                            • kitty      (Kitty terminal emulator theme, opacity & font config)
                             • cava       (CAVA audio visualizer Amberglow CRT theme & configs)
                             • bin        (Helper binaries, wrappers & utilities in ~/.local/bin)
                             • desktop    (Desktop application overrides & Chromium themes)
@@ -118,6 +119,7 @@ check_dependencies() {
         "rofi:rofi or rofi-wayland"
         "mako:mako notification daemon"
         "alacritty:alacritty terminal"
+        "kitty:kitty terminal emulator"
         "fcitx5:fcitx5 input method"
         "jq:jq JSON processor"
         "playerctl:playerctl media controller"
@@ -281,6 +283,14 @@ install_alacritty() {
     log_ok "Alacritty configuration deployed."
 }
 
+install_kitty() {
+    log_step "Installing Kitty Terminal Config..."
+    if [ "$REPO_DIR/.config/kitty" != "$TARGET_HOME/.config/kitty" ]; then
+        deploy_directory_contents "$REPO_DIR/.config/kitty" "$TARGET_HOME/.config/kitty"
+    fi
+    log_ok "Kitty configuration deployed."
+}
+
 install_cava() {
     log_step "Installing CAVA Audio Visualizer Config..."
     if [ "$REPO_DIR/.config/cava" != "$TARGET_HOME/.config/cava" ]; then
@@ -364,6 +374,11 @@ reload_environment() {
         echo -e "${GREEN}✓ Success${NC}"
     fi
 
+    # Reload Kitty
+    if command -v killall >/dev/null 2>&1; then
+        killall -SIGUSR1 kitty 2>/dev/null || true
+    fi
+
     log_ok "Live reload completed!"
 }
 
@@ -389,7 +404,7 @@ update_dotfiles() {
 execute_installation() {
     local modules=("${SELECTED_MODULES[@]}")
     if [ ${#modules[@]} -eq 0 ] || [[ " ${modules[*]} " =~ " all " ]]; then
-        modules=("mango" "waybar" "rofi" "mako" "alacritty" "cava" "mangohud" "bin" "desktop" "env")
+        modules=("mango" "waybar" "rofi" "mako" "alacritty" "kitty" "cava" "mangohud" "bin" "desktop" "env")
     fi
 
     log_info "Installation mode: ${BOLD}${MODE}${NC}"
@@ -403,6 +418,7 @@ execute_installation() {
             rofi)      install_rofi ;;
             mako)      install_mako ;;
             alacritty) install_alacritty ;;
+            kitty)     install_kitty ;;
             cava)      install_cava ;;
             mangohud)  install_mangohud ;;
             bin)       install_bin ;;
