@@ -25,7 +25,6 @@ window#waybar {
 #custom-launcher,
 #custom-pacman,
 #custom-tags,
-#mpris,
 #custom-weather,
 #clock,
 #custom-visualizer,
@@ -51,7 +50,6 @@ window#waybar {
 }
 
 #custom-launcher:hover,
-#mpris:hover,
 #custom-weather:hover,
 #custom-visualizer:hover,
 #custom-pomodoro:hover,
@@ -125,21 +123,48 @@ window#waybar {
   background: transparent;
 }
 
-/* mpris visível mas compacto: leve tingimento verde e negrito, sem inflar
-   o tamanho da caixa — max-length curto no config já corta o título */
+/* mpris: visível e estilizado quando tocando/pausado; totalmente oculto quando parado */
 #mpris {
-  color: #b7d47f;
-  background-color: rgba(157, 187, 92, 0.14);
+  background: transparent;
+  border: none;
+  margin: 0;
+  padding: 0;
+  font-weight: normal;
+  text-shadow: none;
+}
+
+#mpris.playing {
+  padding: 0 10px;
+  margin: 3px 2px;
   border: 1px solid #9dbb5c;
+  background-color: rgba(157, 187, 92, 0.14);
+  color: #b7d47f;
   font-weight: bold;
   text-shadow: 0 0 5px rgba(157, 187, 92, 0.5);
 }
+
 #mpris.paused {
-  color: #8a7d63;
+  padding: 0 10px;
+  margin: 3px 2px;
+  border: 1px solid #4a3f30;
   background-color: #241d15;
-  border-color: #4a3f30;
+  color: #8a7d63;
   font-weight: normal;
   text-shadow: none;
+}
+
+#mpris.stopped {
+  background: transparent;
+  border: none;
+  margin: 0;
+  padding: 0;
+  text-shadow: none;
+}
+
+#mpris.playing:hover,
+#mpris.paused:hover {
+  border-color: #e8952d;
+  color: #f2a94a;
 }
 
 #idle_inhibitor.activated {

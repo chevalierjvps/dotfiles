@@ -52,10 +52,11 @@
     "hide-empty-text": true
   },
   "mpris": {
-    "format": " {title}",
+    "format": "",
     "format-playing": " {title}",
     "format-paused": " {title}",
-    "max-length": 20,
+    "format-stopped": "",
+    "max-length": 25,
     "on-click": "playerctl play-pause",
     "on-click-right": "playerctl next",
     "on-click-middle": "playerctl previous",
