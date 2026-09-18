@@ -15,7 +15,8 @@
     "custom/title"
   ],
   "modules-center": [
-    "clock"
+    "clock",
+    "custom/visualizer"
   ],
   "modules-right": [
     "mpris",
@@ -66,6 +67,17 @@
     "format": "{:%H:%M  ·  %a %d %b}",
     "tooltip-format": "<tt><small>{calendar}</small></tt>",
     "on-click-right": "kitty -e cal -3"
+  },
+  "custom/visualizer": {
+    "format": "{}",
+    "return-type": "json",
+    "exec": "~/.config/waybar/mango/scripts/visualizer.py",
+    "on-click": "playerctl play-pause",
+    "on-click-right": "playerctl next",
+    "on-click-middle": "playerctl previous",
+    "on-scroll-up": "playerctl volume 0.05+",
+    "on-scroll-down": "playerctl volume 0.05-",
+    "hide-empty-text": true
   },
   "custom/pomodoro": {
     "format": "{}",

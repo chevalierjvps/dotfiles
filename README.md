@@ -120,6 +120,23 @@ For users with US-International keyboard layouts (`' + c = ç`):
 
 ---
 
+## 🎵 Clock Audio Visualizer (Waybar + PipeWire / CAVA)
+
+- **Center Placement:** Embedded in `modules-center` alongside the clock, styled in matching phosphor amber with zero-radius geometry.
+- **Live Spectrum Analysis:** Pure monospace Unicode block glyphs (` ▂▄▆▇▅▃ `) reacting to rhythm, bass, and frequencies across all active PipeWire/MPRIS media players.
+- **Zero Idle Overhead:** Automatically stops background audio capture and collapses into hidden state (`hide-empty-text: true`) when music is paused or stopped.
+- **Track Tooltip & Media Controls:** Hover to see current artist and track name; click to play/pause, scroll up/down for volume, right-click for next track, middle-click for previous.
+
+---
+
+## 🎛️ Rofi Session & Mode Keyboard Navigation (`SUPER+D`)
+
+- **Cycle Sessions / Modes:** Press `Tab` or `Shift+Right` / `Control+Tab` / `Alt+Right` / `Alt+l` to cycle forward across all 10 modal sessions (`apps`, `run`, `win`, `calc`, `wifi`, `bt`, `keys`, `layout`, `audio`, `notif`).
+- **Reverse Cycle:** Press `Shift+Tab` (`ISO_Left_Tab`) or `Shift+Left` / `Control+Shift+Tab` / `Alt+Left` / `Alt+h` to cycle backwards.
+- **Vim & Arrow Row Navigation:** Use `Down` / `Up`, `Ctrl+j` / `Ctrl+k`, or `Ctrl+n` / `Ctrl+p` to browse items inside the active mode.
+
+---
+
 ## 🚀 Installation & Maintenance
 
 The repository includes a comprehensive modular installer and manager script (`install.sh`):

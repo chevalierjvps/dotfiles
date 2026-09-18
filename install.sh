@@ -121,6 +121,7 @@ check_dependencies() {
         "jq:jq JSON processor"
         "playerctl:playerctl media controller"
         "wpctl:wireplumber audio control"
+        "cava:cava console audio visualizer (clock spectrum analyzer)"
         "notify-send:libnotify notification utility"
     )
 
