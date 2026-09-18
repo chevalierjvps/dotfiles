@@ -71,6 +71,9 @@ Over 90 binds defined in [`.config/mango/bind.conf`](.config/mango/bind.conf). T
 | `SUPER + O` | **Obsidian** (knowledge hub) |
 | `SUPER + P` | **Pomodoro Menu** (interactive Rofi task selector from Obsidian Vault) |
 | `SUPER + Shift + P` | **Pomodoro Toggle** (instant start/pause focus countdown) |
+| `SUPER + K` / `SUPER + Shift + Space` | **Keyboard Layout Toggle** (instant switch between US-Intl and BR-ABNT2 with Mako OSD) |
+| `SUPER + Shift + K` | **Keyboard Layout Menu** (interactive Rofi layout picker) |
+| `Alt + Shift` | **Hardware Keyboard Layout Switch** (via XKB toggle) |
 | `SUPER + J` | **Ryotunes** (floating centered music player) |
 | `SUPER + Space` | **Toggle Floating Window** |
 | `SUPER + F` | **Toggle Fullscreen** |
@@ -117,30 +120,35 @@ For users with US-International keyboard layouts (`' + c = ç`):
 
 ---
 
-## 🚀 Installation
+## 🚀 Installation & Maintenance
 
+The repository includes a comprehensive modular installer and manager script (`install.sh`):
+
+### Automated Installation
 ```sh
 # 1. Clone the repository
 git clone https://github.com/chevalierjvps/dotfiles.git ~/amberglow-dotfiles
 cd ~/amberglow-dotfiles
 
-# 2. Copy configurations to ~/.config
-cp -r .config/mango .config/waybar .config/rofi .config/mako ~/.config/
-mkdir -p ~/.config/environment.d
-cp .config/environment.d/*.conf ~/.config/environment.d/
-cp .config/*flags.conf ~/.config/ 2>/dev/null || true
-cp .XCompose ~/
+# 2. Run the interactive installer
+./install.sh
 
-# 3. Copy helper binaries & application shortcuts
-mkdir -p ~/.local/bin ~/.local/share/applications ~/.local/share/chrome-themes
-cp -r .local/bin/* ~/.local/bin/
-cp .local/share/applications/*.desktop ~/.local/share/applications/
-cp -r .local/share/chrome-themes/* ~/.local/share/chrome-themes/
+# Or run non-interactive symlink setup (recommended for live editing):
+./install.sh --link --yes
+```
 
-# 4. Ensure scripts are executable
-chmod +x ~/.config/mango/scripts/*.sh ~/.config/mango/autostart.sh \
-         ~/.config/waybar/mango/scripts/*.sh ~/.config/rofi/scripts/*.sh \
-         ~/.local/bin/*
+### Modular Component Deployment
+Install only the components you need:
+```sh
+./install.sh -m waybar -m rofi     # Deploy only Waybar and Rofi
+./install.sh -m mango -m bin       # Deploy only MangoWM and custom utilities
+./install.sh --check              # Check required system dependencies
+```
+
+### Continuous Updates & Maintenance
+Pull the latest changes, update symlinks, verify execution permissions, and live-reload running components without logging out:
+```sh
+./install.sh --update
 ```
 
 ---

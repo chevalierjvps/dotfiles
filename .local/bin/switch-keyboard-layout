@@ -1,0 +1,69 @@
+#!/usr/bin/env bash
+# switch-keyboard-layout — Toggle or select keyboard layout on MangoWM with OSD feedback
+set -euo pipefail
+
+get_layout() {
+    local raw
+    raw="$(mmsg get keyboardlayout 2>/dev/null | jq -r '.layout // empty' 2>/dev/null || true)"
+    if [[ "$raw" =~ [Pp]ortuguese ]]; then
+        echo "BR (ABNT2)"
+    elif [[ "$raw" =~ [Ee]nglish ]]; then
+        echo "US (Intl)"
+    else
+        echo "${raw:-Unknown}"
+    fi
+}
+
+notify_layout() {
+    local current="$1"
+    notify-send \
+        -h string:synchronous:kblayout \
+        -u low \
+        -i input-keyboard \
+        "Keyboard Layout" \
+        "Active: $current"
+}
+
+toggle() {
+    mmsg dispatch switch_keyboard_layout >/dev/null 2>&1
+    local cur
+    cur="$(get_layout)"
+    notify_layout "$cur"
+}
+
+menu() {
+    local current
+    current="$(get_layout)"
+    
+    local options=(
+        "1. US (Intl) — English (US, international dead keys)"
+        "2. BR (ABNT2) — Portuguese (Brazil ABNT2)"
+    )
+    
+    local selected
+    selected=$(printf '%s\n' "${options[@]}" | rofi -dmenu -p "⌨️ Layout (Current: $current)" -i -lines 4 -width 50)
+    
+    if [[ -z "$selected" ]]; then
+        exit 0
+    fi
+    
+    if [[ "$selected" =~ US ]] && [[ "$current" != "US (Intl)" ]]; then
+        toggle
+    elif [[ "$selected" =~ BR ]] && [[ "$current" != "BR (ABNT2)" ]]; then
+        toggle
+    else
+        notify_layout "$current"
+    fi
+}
+
+case "${1:-toggle}" in
+    menu|rofi)
+        menu
+        ;;
+    get)
+        get_layout
+        ;;
+    toggle|*)
+        toggle
+        ;;
+esac
