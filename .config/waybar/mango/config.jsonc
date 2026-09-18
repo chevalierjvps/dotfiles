@@ -10,6 +10,7 @@
   "modules-left": [
     "custom/launcher",
     "custom/pacman",
+    "custom/pomodoro",
     "custom/tags",
     "custom/title"
   ],
@@ -65,6 +66,16 @@
     "format": "{:%H:%M  ·  %a %d %b}",
     "tooltip-format": "<tt><small>{calendar}</small></tt>",
     "on-click-right": "kitty -e cal -3"
+  },
+  "custom/pomodoro": {
+    "format": "{}",
+    "return-type": "json",
+    "exec": "~/.config/waybar/mango/scripts/pomodoro.py server",
+    "on-click": "~/.config/waybar/mango/scripts/pomodoro.py toggle",
+    "on-click-right": "~/.config/waybar/mango/scripts/pomodoro.py reset",
+    "on-click-middle": "~/.config/waybar/mango/scripts/pomodoro.py menu",
+    "on-scroll-up": "~/.config/waybar/mango/scripts/pomodoro.py skip",
+    "on-scroll-down": "~/.config/waybar/mango/scripts/pomodoro.py reset"
   },
   "custom/pacman": {
     "exec": "~/.config/waybar/mango/scripts/pacman.sh",

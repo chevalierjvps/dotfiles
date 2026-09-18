@@ -46,6 +46,8 @@
 !/.local/bin/brave-origin-nightly
 !/.local/bin/rofi
 !/.local/bin/kitty
+!/.local/bin/pomodoro
+!/.local/bin/waybar-module-pomodoro
 
 # ── app launcher overrides (.desktop) ──
 !/.local/share/

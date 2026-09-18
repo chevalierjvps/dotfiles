@@ -21,6 +21,7 @@ refresh() {
 frame=0
 while true; do
     age=$(( $(date +%s) - $(stat -c %Y "$cache" 2>/dev/null || echo 0) ))
+    find "$lock" -mmin +5 -delete 2>/dev/null || true
     if (( age >= max_age )) && [[ ! -f "$lock" ]]; then
         touch "$lock"
         ( refresh & disown ) 2>/dev/null

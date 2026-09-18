@@ -69,6 +69,8 @@ Over 90 binds defined in [`.config/mango/bind.conf`](.config/mango/bind.conf). T
 | `SUPER + E` | **Nautilus File Manager** |
 | `SUPER + W` / `SUPER + B` | **Brave Browser** (pre-loaded with Amberglow theme) |
 | `SUPER + O` | **Obsidian** (knowledge hub) |
+| `SUPER + P` | **Pomodoro Menu** (interactive Rofi task selector from Obsidian Vault) |
+| `SUPER + Shift + P` | **Pomodoro Toggle** (instant start/pause focus countdown) |
 | `SUPER + J` | **Ryotunes** (floating centered music player) |
 | `SUPER + Space` | **Toggle Floating Window** |
 | `SUPER + F` | **Toggle Fullscreen** |
@@ -102,6 +104,16 @@ For users with US-International keyboard layouts (`' + c = ç`):
   --enable-wayland-ime
   --wayland-text-input-version=3
   ```
+
+---
+
+## 🍅 Pomodoro & Focus Hub (Waybar + Obsidian Sync)
+
+- **Status Bar Integration:** Embedded left module beside Pac-Man update indicator, styled with glowing CRT phosphor amber (`#e8952d` / `#f2a94a`) and phosphor charging green (`#9dbb5c`) for breaks.
+- **Multi-Monitor Lockstep:** Unix Domain Socket Master/Subscriber daemon synchronizing timers across multiple displays (`eDP-1`, `HDMI-A-1`) with zero drift and single-source event logging.
+- **Automated Obsidian Logging:** Automatically records completed and interrupted focus sessions into `🍅 Pomodoro & Focus Log.md` in your Obsidian Vault with Dataview inline fields (`(pomodoro:: WORK)`) and daily markdown tables.
+- **Vault Task Integration (`SUPER+P`):** Reads pending tasks (`- [ ]`) directly from `🎯 Central de Tarefas & Missão.md` via Rofi, allowing you to pick your active focus topic on the fly.
+- **Mouse Controls on Waybar:** Left click to toggle start/pause, Right click to reset, Middle click for Rofi menu, Scroll up/down to skip/reset.
 
 ---
 
