@@ -39,7 +39,7 @@ mainbox {
 
 mode-switcher {
     background-color: transparent;
-    spacing:          3px;
+    spacing:          6px;
 }
 
 button {
@@ -48,16 +48,19 @@ button {
     border:           1px;
     border-color:     @border-col;
     border-radius:    0px;
-    padding:          5px 6px;
+    padding:          6px 14px;
     cursor:           pointer;
     horizontal-align: 0.5;
+    vertical-align:   0.5;
+    font:             "SpaceMono Nerd Font 13";
 }
 
 button selected {
-    background-color: @amber;
-    text-color:       #16120c;
-    border-color:     @amber;
-    font:             "DepartureMono Nerd Font Mono Bold 11";
+    background-color: #352515ee;
+    text-color:       @amber-bright;
+    border:           1px 1px 3px 1px;
+    border-color:     @amber-bright;
+    font:             "SpaceMono Nerd Font Bold 13";
 }
 
 inputbar {
@@ -72,8 +75,8 @@ inputbar {
 
 prompt {
     background-color: transparent;
-    text-color:       @amber;
-    font:             "DepartureMono Nerd Font Mono Bold 11";
+    text-color:       @amber-bright;
+    font:             "SpaceMono Nerd Font Bold 13";
 }
 
 entry {

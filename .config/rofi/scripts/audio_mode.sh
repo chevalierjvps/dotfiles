@@ -38,7 +38,7 @@ if [[ "$retv" == "1" && -n "$info" ]]; then
 fi
 
 list() {
-    echo -en "\0prompt\x1faudio\n"
+    echo -en "\0prompt\x1f󰕾\n"
     printf '󰓃  Launch Pavucontrol (Audio GUI)\0info\x1f__pavucontrol\n'
     printf '󰝟  Toggle Output Mute\0info\x1f__toggle_mute\n'
     printf '󰍬  Toggle Microphone Mute\0info\x1f__toggle_mic\n'

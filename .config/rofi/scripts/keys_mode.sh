@@ -5,7 +5,7 @@ set -u
 bindfile="$HOME/.config/mango/bind.conf"
 
 list() {
-    echo -en "\0prompt\x1fkeys\n"
+    echo -en "\0prompt\x1f󰌌\n"
     local section=""
     while IFS= read -r line; do
         if [[ "$line" =~ ^#[[:space:]]*───[[:space:]]*(.+[^─])[[:space:]]*───[[:space:]]*$ ]]; then

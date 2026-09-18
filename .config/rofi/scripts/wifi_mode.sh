@@ -7,7 +7,7 @@ ICON_CHECK=$''
 ICON_SIGNAL=$''
 
 list() {
-    echo -en "\0prompt\x1fwifi\n"
+    echo -en "\0prompt\x1f󰤨\n"
     local radio
     radio="$(nmcli radio wifi)"
     if [[ "$radio" == "enabled" ]]; then

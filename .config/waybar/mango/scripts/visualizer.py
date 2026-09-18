@@ -67,7 +67,8 @@ signal.signal(signal.SIGHUP, handle_signal)
 
 
 def is_audio_active() -> bool:
-    """Check if playerctl is playing or if PipeWire has active audio streams."""
+    """Check if playerctl is playing or if PipeWire has active playback streams (sink-inputs)."""
+    # 1. MPRIS check
     try:
         res = subprocess.run(
             ["playerctl", "status"],
@@ -80,15 +81,20 @@ def is_audio_active() -> bool:
     except Exception:
         pass
 
+    # 2. PipeWire playback sink-inputs check (excludes cava/microphones which are capture streams)
     try:
         res = subprocess.run(
-            ["wpctl", "status"],
+            ["pactl", "list", "sink-inputs"],
             capture_output=True,
             text=True,
             timeout=0.2,
         )
-        if "[active]" in res.stdout:
-            return True
+        if res.returncode == 0 and "Sink Input #" in res.stdout:
+            blocks = res.stdout.split("Sink Input #")
+            for block in blocks[1:]:
+                # If stream is active and not corked/paused
+                if "Corked: yes" not in block and "state: CORKED" not in block:
+                    return True
     except Exception:
         pass
 
@@ -186,12 +192,15 @@ def main():
         # Check silence
         if all(v == 0 for v in values):
             consecutive_silence += 1
-            if consecutive_silence > (FRAMERATE * 2):  # 2 seconds of silence
-                if not is_audio_active():
-                    cleanup()
-                    emit("", "", "hidden")
-                    time.sleep(0.5)
-                    continue
+            if consecutive_silence > int(FRAMERATE * 1.5):  # 1.5s of total silence
+                cleanup()
+                emit("", "", "hidden")
+                consecutive_silence = 0
+                time.sleep(0.5)
+                continue
+            else:
+                emit("", tooltip, "hidden")
+                continue
         else:
             consecutive_silence = 0
 

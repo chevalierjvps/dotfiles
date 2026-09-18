@@ -26,7 +26,7 @@ current_symbol() {
 }
 
 list() {
-    echo -en "\0prompt\x1flayout\n"
+    echo -en "\0prompt\x1f󰕰\n"
     local cur
     cur="$(current_symbol)"
     for entry in "${LAYOUTS[@]}"; do

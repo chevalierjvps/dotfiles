@@ -27,7 +27,6 @@ window#waybar {
 #custom-tags,
 #custom-weather,
 #clock,
-#custom-visualizer,
 #custom-pomodoro,
 #idle_inhibitor,
 #custom-cpu-temp,
@@ -51,7 +50,6 @@ window#waybar {
 
 #custom-launcher:hover,
 #custom-weather:hover,
-#custom-visualizer:hover,
 #custom-pomodoro:hover,
 #idle_inhibitor:hover,
 #custom-cpu-temp:hover,
@@ -190,16 +188,28 @@ window#waybar {
 }
 
 #custom-visualizer {
-  font-weight: bold;
+  padding: 0 8px;
+  margin: 3px 2px;
+  border: 1px solid #e8952d;
+  background-color: #241d15;
   color: #e8952d;
-  border-color: #e8952d;
+  font-weight: bold;
   letter-spacing: 1px;
   text-shadow: 0 0 6px rgba(232, 149, 45, 0.5);
-  padding: 0 8px;
 }
+
 #custom-visualizer:hover {
   background-color: #2c2418;
   color: #f2a94a;
+}
+
+#custom-visualizer.hidden,
+#custom-visualizer:empty {
+  padding: 0;
+  margin: 0;
+  border: none;
+  background: transparent;
+  min-width: 0;
 }
 
 #network.disconnected,

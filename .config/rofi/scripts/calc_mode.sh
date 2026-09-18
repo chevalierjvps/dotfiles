@@ -13,7 +13,7 @@ case "$retv" in
         ;;
     2)
         # Enter on typed expression -> evaluate
-        echo -en "\0prompt\x1fcalc\n"
+        echo -en "\0prompt\x1f󰪚\n"
         expr="$1"
         result="$(qalc -t "$expr" 2>/dev/null)"
         if [[ -z "$result" ]]; then
@@ -23,7 +23,7 @@ case "$retv" in
         fi
         ;;
     *)
-        echo -en "\0prompt\x1fcalc\n"
+        echo -en "\0prompt\x1f󰪚\n"
         echo -en "\0message\x1fType an expression and press Enter\n"
         ;;
 esac

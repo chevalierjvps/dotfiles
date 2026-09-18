@@ -7,7 +7,7 @@ ICON_OFF=$'󰂲'
 ICON_DEVICE=$''
 
 list() {
-    echo -en "\0prompt\x1fbluetooth\n"
+    echo -en "\0prompt\x1f󰂯\n"
     local powered
     powered="$(bluetoothctl show | awk -F': ' '/Powered/{print $2}')"
     if [[ "$powered" == "yes" ]]; then

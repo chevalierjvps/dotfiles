@@ -3,7 +3,7 @@
 set -u
 
 list() {
-    echo -en "\0prompt\x1fnotif\n"
+    echo -en "\0prompt\x1f󰂚\n"
 
     if makoctl mode | grep -qx "do-not-disturb"; then
         printf '%s Do Not Disturb: Enabled (click to disable)\0info\x1f__toggle_dnd\n' "$(printf '')"
