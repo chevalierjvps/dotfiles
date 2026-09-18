@@ -23,8 +23,6 @@ configuration {
     kb-mode-previous:    "ISO_Left_Tab,Shift+Left,Control+ISO_Left_Tab,Alt+Left,Alt+h";
     kb-element-next:     "";
     kb-element-prev:     "";
-    kb-row-up:           "Up,Control+p,Control+k";
-    kb-row-down:         "Down,Control+n,Control+j";
 }
 
 @theme "amberglow"

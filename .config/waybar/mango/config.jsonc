@@ -28,7 +28,7 @@
     "custom/mic",
     "backlight",
     "battery",
-    "tray",
+    "group/tray-expander",
     "idle_inhibitor",
     "custom/notifications",
     "custom/lock",
@@ -72,9 +72,9 @@
     "format": "{}",
     "return-type": "json",
     "exec": "~/.config/waybar/mango/scripts/visualizer.py",
-    "on-click": "playerctl play-pause",
-    "on-click-right": "playerctl next",
-    "on-click-middle": "playerctl previous",
+    "on-click": "~/.local/bin/toggle-cava-float",
+    "on-click-right": "playerctl play-pause",
+    "on-click-middle": "playerctl next",
     "on-scroll-up": "playerctl volume 0.05+",
     "on-scroll-down": "playerctl volume 0.05-",
     "hide-empty-text": true
@@ -115,6 +115,23 @@
     "interval": 5,
     "format": " {}",
     "on-click": "kitty -e btop"
+  },
+  "group/tray-expander": {
+    "orientation": "inherit",
+    "drawer": {
+      "transition-duration": 300,
+      "children-class": "tray-expanded",
+      "transition-left-to-right": false,
+      "click-to-reveal": true
+    },
+    "modules": [
+      "custom/tray-toggle",
+      "tray"
+    ]
+  },
+  "custom/tray-toggle": {
+    "format": "󰅃",
+    "tooltip-format": "System Tray (Click to expand/collapse)"
   },
   "tray": {
     "icon-size": 16,

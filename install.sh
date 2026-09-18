@@ -82,6 +82,7 @@ Components / Modules:
                             • rofi       (Rofi launcher themes & custom modal script modes)
                             • mako       (Mako notification daemon & OSD volume widget)
                             • alacritty  (Alacritty terminal emulator theme & font config)
+                            • cava       (CAVA audio visualizer Amberglow CRT theme & configs)
                             • bin        (Helper binaries, wrappers & utilities in ~/.local/bin)
                             • desktop    (Desktop application overrides & Chromium themes)
                             • env        (Environment.d configs, browser Wayland flags & .XCompose)
@@ -280,6 +281,14 @@ install_alacritty() {
     log_ok "Alacritty configuration deployed."
 }
 
+install_cava() {
+    log_step "Installing CAVA Audio Visualizer Config..."
+    if [ "$REPO_DIR/.config/cava" != "$TARGET_HOME/.config/cava" ]; then
+        deploy_directory_contents "$REPO_DIR/.config/cava" "$TARGET_HOME/.config/cava"
+    fi
+    log_ok "CAVA configuration deployed."
+}
+
 install_mangohud() {
     log_step "Installing MangoHud Silent Desktop Config..."
     if [ "$REPO_DIR/.config/MangoHud" != "$TARGET_HOME/.config/MangoHud" ]; then
@@ -380,7 +389,7 @@ update_dotfiles() {
 execute_installation() {
     local modules=("${SELECTED_MODULES[@]}")
     if [ ${#modules[@]} -eq 0 ] || [[ " ${modules[*]} " =~ " all " ]]; then
-        modules=("mango" "waybar" "rofi" "mako" "alacritty" "mangohud" "bin" "desktop" "env")
+        modules=("mango" "waybar" "rofi" "mako" "alacritty" "cava" "mangohud" "bin" "desktop" "env")
     fi
 
     log_info "Installation mode: ${BOLD}${MODE}${NC}"
@@ -394,6 +403,7 @@ execute_installation() {
             rofi)      install_rofi ;;
             mako)      install_mako ;;
             alacritty) install_alacritty ;;
+            cava)      install_cava ;;
             mangohud)  install_mangohud ;;
             bin)       install_bin ;;
             desktop)   install_desktop ;;

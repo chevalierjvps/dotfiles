@@ -20,6 +20,9 @@
 # ── alacritty (terminal) ──
 !/.config/alacritty/
 
+# ── cava (audio visualizer) ──
+!/.config/cava/
+
 # ── systemd environment.d fixes ──
 !/.config/environment.d/
 /.config/environment.d/*
@@ -49,6 +52,7 @@
 !/.local/bin/pomodoro
 !/.local/bin/waybar-module-pomodoro
 !/.local/bin/switch-keyboard-layout
+!/.local/bin/toggle-cava-float
 
 # ── app launcher overrides (.desktop) ──
 !/.local/share/

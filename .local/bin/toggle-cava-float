@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+# ══════════════════════════════════════════════════════════════════════════════
+#  ⚡ TOGGLE FLOATING CAVA AUDIO VISUALIZER (AMBERGLOW CRT) ⚡
+# ══════════════════════════════════════════════════════════════════════════════
+
+if pgrep -f "kitty.*cava-float" >/dev/null 2>&1; then
+    pkill -f "kitty.*cava-float" 2>/dev/null || true
+else
+    kitty --class cava-float \
+          --title "cava-visualizer" \
+          -o initial_window_width=880 \
+          -o initial_window_height=420 \
+          -o window_padding_width=16 \
+          -o confirm_os_window_close=0 \
+          -e cava -p "${HOME}/.config/cava/amberglow_visualizer" &
+fi

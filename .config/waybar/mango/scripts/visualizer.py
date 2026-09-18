@@ -106,10 +106,10 @@ def get_metadata() -> str:
         )
         out = res.stdout.strip()
         if out and out != "—":
-            return out
+            return f"{out}\nLeft-click: CAVA Visualizer (Float)\nRight-click: Play/Pause"
     except Exception:
         pass
-    return "Audio Visualizer (Amberglow CRT)"
+    return "Audio Visualizer (Amberglow CRT)\nLeft-click: CAVA Visualizer (Float)"
 
 
 def start_cava():

@@ -38,6 +38,7 @@ window#waybar {
 #custom-mic,
 #backlight,
 #battery,
+#custom-tray-toggle,
 #custom-notifications,
 #tray,
 #custom-lock,
@@ -62,6 +63,7 @@ window#waybar {
 #custom-mic:hover,
 #backlight:hover,
 #battery:hover,
+#custom-tray-toggle:hover,
 #custom-notifications:hover,
 #custom-lock:hover {
   border-color: #e8952d;
@@ -178,6 +180,26 @@ window#waybar {
 #network.disconnected,
 #bluetooth.disabled {
   color: #6a5f4d;
+}
+
+#group-tray-expander {
+  background: transparent;
+  border: none;
+  margin: 0;
+  padding: 0;
+}
+
+#custom-tray-toggle {
+  color: #e8952d;
+  font-weight: bold;
+  padding: 0 8px;
+  border-color: #4a3f30;
+}
+
+#custom-tray-toggle:hover {
+  background-color: #2c2418;
+  color: #f2a94a;
+  border-color: #e8952d;
 }
 
 #tray > .passive {
