@@ -22,15 +22,16 @@ swaybg -i "/home/jagermeister/Pictures/Wallpapers/hancore-blackgold-1.jpg" -m fi
 # notificações
 mako >/dev/null 2>&1 &
 
-# barra
-waybar -c ~/.config/waybar/mango/config.jsonc -s ~/.config/waybar/mango/style.css >/dev/null 2>&1 &
+# barra (iniciada sob supervisão contínua com auto-recuperação)
+~/.local/bin/restart-waybar >/dev/null 2>&1 &
 
 # histórico de clipboard (usado no SUPER+V)
 wl-paste --type text --watch cliphist store >/dev/null 2>&1 &
 wl-paste --type image --watch cliphist store >/dev/null 2>&1 &
 
-# auto-lock por inatividade (mesmo tempo configurado no Noctalia: 10min)
+# auto-lock por inatividade e auto-recuperação pós-suspend
 swayidle -w \
     timeout 600 'swaylock' \
     before-sleep 'swaylock' \
+    after-resume "$HOME/.local/bin/restart-waybar" \
     >/dev/null 2>&1 &

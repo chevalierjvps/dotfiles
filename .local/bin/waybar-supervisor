@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+# ══════════════════════════════════════════════════════════════════════════════
+#  ⚡ WAYBAR SUPERVISOR (AMBERGLOW CRT) ⚡
+#  Recupera o Waybar de forma transparente e resiliente em caso de:
+#  - Suspend / Sleep / Resume do sistema
+#  - Queda ou reconexão de monitores (DPMS, HDMI, eDP, wlroots output removal)
+#  - Falhas de sinal ou crashes esporádicos do compositor
+# ══════════════════════════════════════════════════════════════════════════════
+
+CONFIG="$HOME/.config/waybar/mango/config.jsonc"
+STYLE="$HOME/.config/waybar/mango/style.css"
+
+MIN_LIFETIME=3
+
+while true; do
+    START_TIME=$(date +%s)
+    waybar -c "$CONFIG" -s "$STYLE" >/dev/null 2>&1
+    EXIT_CODE=$?
+    END_TIME=$(date +%s)
+    DURATION=$((END_TIME - START_TIME))
+
+    # Limpa scripts filhos órfãos antes de respawnar
+    pkill -f "$HOME/.config/waybar/mango/scripts/" 2>/dev/null || true
+
+    if [ "$DURATION" -lt "$MIN_LIFETIME" ]; then
+        # Saiu rapidamente (ex: monitor ainda acordando do suspend)
+        sleep 2
+    else
+        # Rodou normalmente e caiu (ex: retorno de suspend / remoção de output)
+        sleep 0.8
+    fi
+done

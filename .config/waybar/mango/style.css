@@ -203,8 +203,7 @@ window#waybar {
   color: #f2a94a;
 }
 
-#custom-visualizer.hidden,
-#custom-visualizer:empty {
+#custom-visualizer.hidden {
   padding: 0;
   margin: 0;
   border: none;

@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+# ══════════════════════════════════════════════════════════════════════════════
+#  ⚡ RESTART WAYBAR (AMBERGLOW CRT) ⚡
+#  Encerra instâncias e reinicia sob supervisão contínua
+# ══════════════════════════════════════════════════════════════════════════════
+
+# Encerra supervisor anterior e qualquer waybar ou script pendente
+pkill -f "waybar-supervisor" 2>/dev/null || true
+killall -q waybar 2>/dev/null || true
+pkill -f "$HOME/.config/waybar/mango/scripts/" 2>/dev/null || true
+
+# Breve espera para liberação de portas Wayland / DRM
+sleep 0.5
+
+# Inicia o supervisor desacoplado
+setsid -f "$HOME/.local/bin/waybar-supervisor" >/dev/null 2>&1
+
+echo "Waybar reiniciado com sucesso."
