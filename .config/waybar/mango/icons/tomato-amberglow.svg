@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="50 50 156 156">
+  <!-- Tomato Fruit Body (Phosphor Amber Glow) -->
+  <defs>
+    <radialGradient id="amber_glow" cx="40%" cy="35%" r="65%">
+      <stop offset="0%" stop-color="#ffbe60"/>
+      <stop offset="50%" stop-color="#e8952d"/>
+      <stop offset="100%" stop-color="#aa6c1f"/>
+    </radialGradient>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="0" stdDeviation="4" flood-color="#e8952d" flood-opacity="0.6"/>
+    </filter>
+  </defs>
+  
+  <circle cx="128" cy="132" r="66" fill="url(#amber_glow)" filter="url(#glow)"/>
+
+  <!-- Tomato Leaf / Calyx (Phosphor Green) -->
+  <path fill="#9dbb5c" fill-rule="evenodd" d="M 114.95 55.5 C 113.6 55.7 109.8 58.7 110.6 60.8 L 112.5 66 C 85.3 68.5 70.9 96.3 70.9 96.3 C 80 97.9 101.9 86.2 101.9 86.2 C 108 82.9 111.5 79.4 113.5 76.3 C 113.1 79.5 113.2 83.7 114.1 89.1 C 116.6 102.5 126.7 112.5 126.7 112.5 C 139 92.8 125.8 73.4 125.8 73.4 C 145.2 86.2 175.5 80.7 175.5 80.7 C 162 66.6 147.5 63.5 147.5 63.5 C 136.8 61.1 126.9 64.2 121.7 65.4 L 119.3 58.1 C 118.7 56.4 116.9 55.4 114.95 55.5 Z"/>
+</svg>

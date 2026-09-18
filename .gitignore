@@ -2,6 +2,8 @@
 # in $HOME is ignored by default. Never remove the leading "/*" blanket
 # ignore; only add more "!/path" allowlist entries as needed.
 /*
+__pycache__/
+*.pyc
 
 # ── mango (compositor) ──
 !/.config/

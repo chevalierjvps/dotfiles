@@ -314,24 +314,37 @@ class PomodoroEngine:
 
         classes = []
         if self.state == "WORK":
-            icon = "󰔐"
             classes.append("work")
             mode_desc = f"Focus (Cycle {self.cycle}/{MAX_CYCLES})"
+            if self.is_running:
+                classes.append("running")
+                state_desc = "▶️ Running"
+                # Ticking animation between solid and clock-ticking Amberglow tomato
+                icon = "\ue003" if (secs % 2 == 0) else "\ue001"
+            else:
+                classes.append("paused")
+                state_desc = "⏸️ Paused"
+                icon = "\ue002"  # Outline Amberglow tomato
         elif self.state == "SHORT_BREAK":
-            icon = "󰒲"
             classes.append("break")
             mode_desc = "Short Break"
+            icon = "󰒲"
+            if self.is_running:
+                classes.append("running")
+                state_desc = "▶️ Running"
+            else:
+                classes.append("paused")
+                state_desc = "⏸️ Paused"
         else:
-            icon = "󰃮"
             classes.append("break")
             mode_desc = "Long Break"
-
-        if self.is_running:
-            classes.append("running")
-            state_desc = "▶️ Running"
-        else:
-            classes.append("paused")
-            state_desc = "⏸️ Paused"
+            icon = "󰃮"
+            if self.is_running:
+                classes.append("running")
+                state_desc = "▶️ Running"
+            else:
+                classes.append("paused")
+                state_desc = "⏸️ Paused"
 
         text = f"{icon} {time_str}"
 
@@ -361,10 +374,13 @@ def play_sound(path):
         subprocess.Popen(["paplay", path], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
 
 def send_notification(title, body, urgency="normal"):
+    icon_path = os.path.expanduser("~/.config/waybar/mango/icons/tomato-amberglow.svg")
+    if not os.path.exists(icon_path):
+        icon_path = os.path.expanduser("~/.local/share/icons/amberglow-tomato.svg")
     subprocess.Popen([
         "notify-send",
         "-u", urgency,
-        "-i", "alarm",
+        "-i", icon_path if os.path.exists(icon_path) else "alarm",
         title,
         body,
     ], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
