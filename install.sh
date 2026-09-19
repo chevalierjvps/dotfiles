@@ -148,6 +148,15 @@ check_dependencies() {
         optional_missing+=("ttf-departure-mono-nerd")
     fi
 
+    # Portal backend check
+    echo -n "  Checking XDG Desktop Portal backends... "
+    if [ -f /usr/lib/xdg-desktop-portal-gtk ] || [ -f /usr/libexec/xdg-desktop-portal-gtk ]; then
+        echo -e "${GREEN}✓ Found (xdg-desktop-portal-gtk)${NC}"
+    else
+        echo -e "${AMBER}! Not found (xdg-desktop-portal-gtk recommended for file dialogs)${NC}"
+        optional_missing+=("xdg-desktop-portal-gtk")
+    fi
+
     echo ""
     if [ ${#missing[@]} -eq 0 ]; then
         log_ok "All core dependencies are satisfied!"
@@ -328,9 +337,13 @@ install_desktop() {
 }
 
 install_env() {
-    log_step "Installing Environment, Flags & Compose Tables..."
+    log_step "Installing Environment, Flags, Portals & Compose Tables..."
     if [ "$REPO_DIR/.config/environment.d" != "$TARGET_HOME/.config/environment.d" ]; then
         deploy_directory_contents "$REPO_DIR/.config/environment.d" "$TARGET_HOME/.config/environment.d"
+    fi
+
+    if [ -d "$REPO_DIR/.config/xdg-desktop-portal" ] && [ "$REPO_DIR/.config/xdg-desktop-portal" != "$TARGET_HOME/.config/xdg-desktop-portal" ]; then
+        deploy_directory_contents "$REPO_DIR/.config/xdg-desktop-portal" "$TARGET_HOME/.config/xdg-desktop-portal"
     fi
 
     for f in "$REPO_DIR"/.config/*flags.conf; do
@@ -341,7 +354,7 @@ install_env() {
     if [ -f "$REPO_DIR/.XCompose" ]; then
         deploy_file "$REPO_DIR/.XCompose" "$TARGET_HOME/.XCompose"
     fi
-    log_ok "Environment and IME configs deployed."
+    log_ok "Environment, portal, and IME configs deployed."
 }
 
 # ──────────────────────────────────────────────────────────────────────────────
@@ -360,9 +373,9 @@ reload_environment() {
         fi
     fi
 
-    # Reload Waybar
+    # Reload Waybar & XDG Desktop Portals
     if [ -f "$TARGET_HOME/.local/bin/restart-waybar" ]; then
-        echo -n "  Restarting Waybar... "
+        echo -n "  Restarting Waybar & Portals... "
         "$TARGET_HOME/.local/bin/restart-waybar" >/dev/null 2>&1 || true
         echo -e "${GREEN}✓ Success${NC}"
     fi

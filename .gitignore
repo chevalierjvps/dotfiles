@@ -28,6 +28,9 @@ __pycache__/
 # ── cava (audio visualizer) ──
 !/.config/cava/
 
+# ── xdg-desktop-portal (file chooser, screen cast) ──
+!/.config/xdg-desktop-portal/
+
 # ── systemd environment.d fixes ──
 !/.config/environment.d/
 /.config/environment.d/*
