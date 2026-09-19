@@ -13,9 +13,10 @@ import subprocess
 import sys
 import time
 
-BAR_GLYPHS = (" ", " ", "▂", "▃", "▄", "▅", "▆", "▇")
+BAR_GLYPHS = (" ", "▂", "▃", "▄", "▅", "▆", "▇", "█")
 NUM_BARS = 8
 FRAMERATE = 20
+SILENCE_TIMEOUT = 60.0  # 1 minute timeout before terminating cava and hiding module
 
 CAVA_CONFIG = f"""
 [general]
@@ -105,13 +106,13 @@ def get_metadata() -> str:
     """Get current playing track metadata for tooltip."""
     try:
         res = subprocess.run(
-            ["playerctl", "metadata", "--format", "{{ artist }} — {{ title }}"],
+            ["playerctl", "metadata", "--format", "{{ status }}: {{ artist }} — {{ title }}"],
             capture_output=True,
             text=True,
             timeout=0.2,
         )
         out = res.stdout.strip()
-        if out and out != "—":
+        if out and out != "—" and not out.endswith("—"):
             return f"{out}\nLeft-click: CAVA Visualizer (Float)\nRight-click: Play/Pause"
     except Exception:
         pass
@@ -146,7 +147,7 @@ def emit(text: str, tooltip: str = "", css_class: str = ""):
 
 def main():
     global cava_proc
-    consecutive_silence = 0
+    last_audio_time = 0.0
     tooltip = "Audio Visualizer"
     last_tooltip_time = 0.0
 
@@ -154,22 +155,35 @@ def main():
     emit("", "", "hidden")
 
     while True:
-        if not is_audio_active():
+        audio_active = is_audio_active()
+        now = time.monotonic()
+
+        # If visualizer is dormant and no audio is playing, sleep and poll
+        if last_audio_time == 0.0 and not audio_active:
             cleanup()
             emit("", "", "hidden")
-            consecutive_silence = 0
             time.sleep(1.0)
             continue
 
-        # Audio is active, ensure cava is running
+        # If audio is actively playing, update last_audio_time
+        if audio_active:
+            last_audio_time = now
+
+        # Check if silence has exceeded 1 minute (60 seconds)
+        if now - last_audio_time > SILENCE_TIMEOUT:
+            cleanup()
+            emit("", "", "hidden")
+            last_audio_time = 0.0
+            time.sleep(1.0)
+            continue
+
+        # Audio is active or within 1-minute grace period, ensure cava is running
         if cava_proc is None or cava_proc.poll() is not None:
             cava_proc = start_cava()
-            consecutive_silence = 0
 
         # Read line from cava
         line = cava_proc.stdout.readline()
         if not line:
-            # cava closed or failed
             cleanup()
             time.sleep(0.5)
             continue
@@ -189,20 +203,9 @@ def main():
         if len(values) != NUM_BARS:
             continue
 
-        # Check silence
-        if all(v == 0 for v in values):
-            consecutive_silence += 1
-            if consecutive_silence > int(FRAMERATE * 1.5):  # 1.5s of total silence
-                cleanup()
-                emit("", "", "hidden")
-                consecutive_silence = 0
-                time.sleep(0.5)
-                continue
-            else:
-                emit("", tooltip, "hidden")
-                continue
-        else:
-            consecutive_silence = 0
+        # If any bar has audio signal, refresh last_audio_time
+        if any(v > 0 for v in values):
+            last_audio_time = time.monotonic()
 
         # Update metadata every 2 seconds
         now = time.monotonic()

@@ -29,9 +29,9 @@ mako >/dev/null 2>&1 &
 wl-paste --type text --watch cliphist store >/dev/null 2>&1 &
 wl-paste --type image --watch cliphist store >/dev/null 2>&1 &
 
-# auto-lock por inatividade e auto-recuperação pós-suspend
+# auto-lock por inatividade (1 hora) e auto-recuperação pós-suspend
 swayidle -w \
-    timeout 600 'swaylock' \
+    timeout 3600 'swaylock' \
     before-sleep 'swaylock' \
     after-resume "$HOME/.local/bin/restart-waybar" \
     >/dev/null 2>&1 &
