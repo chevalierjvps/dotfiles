@@ -3,8 +3,8 @@ set +e
 
 # importa variáveis de ambiente do Wayland para o DBus e systemd --user
 systemctl --user unset-environment MANGOHUD >/dev/null 2>&1 || true
-dbus-update-activation-environment --systemd WAYLAND_DISPLAY DISPLAY XDG_CURRENT_DESKTOP INPUT_METHOD GTK_IM_MODULE QT_IM_MODULE XMODIFIERS SDL_IM_MODULE XCOMPOSEFILE DISABLE_MANGOHUD >/dev/null 2>&1
-systemctl --user import-environment WAYLAND_DISPLAY DISPLAY XDG_CURRENT_DESKTOP INPUT_METHOD GTK_IM_MODULE QT_IM_MODULE XMODIFIERS SDL_IM_MODULE XCOMPOSEFILE DISABLE_MANGOHUD >/dev/null 2>&1
+dbus-update-activation-environment --systemd WAYLAND_DISPLAY DISPLAY XDG_CURRENT_DESKTOP XDG_SESSION_CLASS INPUT_METHOD GTK_IM_MODULE QT_IM_MODULE XMODIFIERS SDL_IM_MODULE XCOMPOSEFILE DISABLE_MANGOHUD >/dev/null 2>&1
+systemctl --user import-environment WAYLAND_DISPLAY DISPLAY XDG_CURRENT_DESKTOP XDG_SESSION_CLASS INPUT_METHOD GTK_IM_MODULE QT_IM_MODULE XMODIFIERS SDL_IM_MODULE XCOMPOSEFILE DISABLE_MANGOHUD >/dev/null 2>&1
 
 # input method (Fcitx5 para cedilha no Wayland / Chromium / apps)
 command -v fcitx5 >/dev/null 2>&1 && fcitx5 -d --replace >/dev/null 2>&1 &

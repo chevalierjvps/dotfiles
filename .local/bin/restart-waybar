@@ -10,8 +10,8 @@ killall -q waybar 2>/dev/null || true
 pkill -f "$HOME/.config/waybar/mango/scripts/" 2>/dev/null || true
 
 # Sincroniza ambiente Wayland e garante que os portais XDG (file chooser) estejam saudáveis
-systemctl --user import-environment WAYLAND_DISPLAY DISPLAY XDG_CURRENT_DESKTOP 2>/dev/null || true
-dbus-update-activation-environment --systemd WAYLAND_DISPLAY DISPLAY XDG_CURRENT_DESKTOP 2>/dev/null || true
+systemctl --user import-environment WAYLAND_DISPLAY DISPLAY XDG_CURRENT_DESKTOP XDG_SESSION_CLASS 2>/dev/null || true
+dbus-update-activation-environment --systemd WAYLAND_DISPLAY DISPLAY XDG_CURRENT_DESKTOP XDG_SESSION_CLASS 2>/dev/null || true
 systemctl --user restart xdg-desktop-portal-gtk xdg-desktop-portal 2>/dev/null || true
 
 # Breve espera para liberação de portas Wayland / DRM

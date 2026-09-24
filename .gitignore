@@ -31,6 +31,9 @@ __pycache__/
 # ── xdg-desktop-portal (file chooser, screen cast) ──
 !/.config/xdg-desktop-portal/
 
+# ── mpv (media player with GPU hwaccel) ──
+!/.config/mpv/
+
 # ── systemd environment.d fixes ──
 !/.config/environment.d/
 /.config/environment.d/*

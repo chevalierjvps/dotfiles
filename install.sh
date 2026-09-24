@@ -88,6 +88,7 @@ Components / Modules:
                             • desktop    (Desktop application overrides & Chromium themes)
                             • env        (Environment.d configs, browser Wayland flags & .XCompose)
                             • mangohud   (MangoHud desktop silent configuration)
+                            • mpv        (MPV media player hardware acceleration & Amberglow OSD)
                             • all        (All of the above — Default)
 
 Maintenance Actions:
@@ -125,6 +126,7 @@ check_dependencies() {
         "playerctl:playerctl media controller"
         "wpctl:wireplumber audio control"
         "cava:cava console audio visualizer (clock spectrum analyzer)"
+        "mpv:mpv hardware-accelerated media player"
         "notify-send:libnotify notification utility"
     )
 
@@ -316,6 +318,14 @@ install_mangohud() {
     log_ok "MangoHud configuration deployed."
 }
 
+install_mpv() {
+    log_step "Installing MPV Media Player Config..."
+    if [ "$REPO_DIR/.config/mpv" != "$TARGET_HOME/.config/mpv" ]; then
+        deploy_directory_contents "$REPO_DIR/.config/mpv" "$TARGET_HOME/.config/mpv"
+    fi
+    log_ok "MPV configuration deployed."
+}
+
 install_bin() {
     log_step "Installing Helper Binaries & Custom Utilities (~/.local/bin)..."
     if [ "$REPO_DIR/.local/bin" != "$TARGET_HOME/.local/bin" ]; then
@@ -417,7 +427,7 @@ update_dotfiles() {
 execute_installation() {
     local modules=("${SELECTED_MODULES[@]}")
     if [ ${#modules[@]} -eq 0 ] || [[ " ${modules[*]} " =~ " all " ]]; then
-        modules=("mango" "waybar" "rofi" "mako" "alacritty" "kitty" "cava" "mangohud" "bin" "desktop" "env")
+        modules=("mango" "waybar" "rofi" "mako" "alacritty" "kitty" "cava" "mangohud" "mpv" "bin" "desktop" "env")
     fi
 
     log_info "Installation mode: ${BOLD}${MODE}${NC}"
@@ -434,6 +444,7 @@ execute_installation() {
             kitty)     install_kitty ;;
             cava)      install_cava ;;
             mangohud)  install_mangohud ;;
+            mpv)       install_mpv ;;
             bin)       install_bin ;;
             desktop)   install_desktop ;;
             env)       install_env ;;

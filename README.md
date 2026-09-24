@@ -43,6 +43,7 @@
 | [`.config/alacritty/`](.config/alacritty/) | Alacritty terminal configuration with subtle blur transparency and Amberglow palette |
 | [`.config/kitty/`](.config/kitty/) | Kitty terminal configuration with subtle blur transparency and Amberglow palette |
 | [`.config/MangoHud/`](.config/MangoHud/) | MangoHud configuration ensuring overlay remains silent (`no_display=1`) for desktop apps |
+| [`.config/mpv/`](.config/mpv/) | MPV media player configuration with hardware acceleration (NVDEC/VA-API) & Amberglow OSD |
 | [`.config/environment.d/`](.config/environment.d/) | Session environment fixes (Fcitx5 input method, MangoHud crash workaround, cursor theme) |
 | [`.local/bin/`](.local/bin/) | Helper scripts and wrappers (Brave, Rofi, Kitty) for environment sanitization and flag parsing |
 | [`.local/share/applications/`](.local/share/applications/) | `.desktop` entries with baked-in Wayland flags and theme extensions |
