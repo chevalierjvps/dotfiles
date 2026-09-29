@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+# ══════════════════════════════════════════════════════════════════════════════
+#  ⚡ MANGOWM SESSION WRAPPER ⚡
+#  Garante que monitor.conf esteja validado e consistente com o estado real do
+#  hardware DRM antes de iniciar o compositor, prevenindo inicialização em tela preta.
+# ══════════════════════════════════════════════════════════════════════════════
+
+if [ -x "$HOME/.config/mango/scripts/auto-monitor.sh" ]; then
+    "$HOME/.config/mango/scripts/auto-monitor.sh" >/dev/null 2>&1 || true
+fi
+
+exec /usr/bin/mango "$@"

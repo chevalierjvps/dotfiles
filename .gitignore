@@ -66,6 +66,7 @@ __pycache__/
 !/.local/bin/toggle-cava-float
 !/.local/bin/restart-waybar
 !/.local/bin/waybar-supervisor
+!/.local/bin/mango
 
 # ── app launcher overrides (.desktop) ──
 !/.local/share/

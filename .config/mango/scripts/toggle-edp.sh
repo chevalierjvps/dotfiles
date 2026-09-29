@@ -6,12 +6,15 @@ set -euo pipefail
 MONITOR_CONF="$HOME/.config/mango/monitor.conf"
 
 restart_waybar() {
-    # O Waybar segfaulta ao adicionar/remover saídas dinamicamente no wlroots.
-    # Reinicia o Waybar de forma desacoplada (daemonizado via setsid).
-    killall -q waybar 2>/dev/null || true
-    pkill -f "$HOME/.config/waybar/mango/scripts/" 2>/dev/null || true
-    sleep 0.5
-    setsid -f waybar -c "$HOME/.config/waybar/mango/config.jsonc" -s "$HOME/.config/waybar/mango/style.css" >/dev/null 2>&1
+    # Reinicia o Waybar de forma desacoplada via supervisor resiliente
+    if [ -x "$HOME/.local/bin/restart-waybar" ]; then
+        "$HOME/.local/bin/restart-waybar" >/dev/null 2>&1 || true
+    else
+        killall -q waybar 2>/dev/null || true
+        pkill -f "$HOME/.config/waybar/mango/scripts/" 2>/dev/null || true
+        sleep 0.5
+        setsid -f waybar -c "$HOME/.config/waybar/mango/config.jsonc" -s "$HOME/.config/waybar/mango/style.css" >/dev/null 2>&1
+    fi
 }
 
 is_edp_on() {
@@ -21,6 +24,15 @@ is_edp_on() {
 }
 
 turn_off() {
+    # Proteção: nunca desligar eDP-1 se o monitor externo HDMI não estiver conectado
+    if ! grep -qs "^connected$" /sys/class/drm/card*-HDMI-*/status 2>/dev/null; then
+        if command -v notify-send >/dev/null 2>&1; then
+            notify-send "Monitor" "Apenas o monitor interno está conectado. Não é seguro desligá-lo." -i dialog-warning -t 4000 2>/dev/null || true
+        fi
+        echo "Aviso: Nenhum monitor externo conectado. eDP-1 mantido ligado." >&2
+        return 1
+    fi
+
     cat << 'EOF' > "$MONITOR_CONF"
 # Apenas monitor externo maior (HDMI-A-1)
 monitorrule=name:HDMI-A-1,width:2560,height:1440,refresh:143.912,x:0,y:0,scale:1
