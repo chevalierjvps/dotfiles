@@ -1,0 +1,8 @@
+[Unit]
+Description=PC Performance & Memory Leak Guardian
+
+[Service]
+Type=oneshot
+ExecStart=%h/.local/bin/pc-guardian.sh
+Nice=19
+IOSchedulingClass=idle

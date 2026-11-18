@@ -67,6 +67,16 @@ __pycache__/
 !/.local/bin/restart-waybar
 !/.local/bin/waybar-supervisor
 !/.local/bin/mango
+!/.local/bin/pc-guardian.sh
+
+# ── systemd user performance guardian ──
+!/.config/systemd/
+/.config/systemd/*
+!/.config/systemd/user/
+/.config/systemd/user/*
+!/.config/systemd/user/pc-guardian.service
+!/.config/systemd/user/pc-guardian.timer
+!/.config/systemd/user/ollama.service
 
 # ── app launcher overrides (.desktop) ──
 !/.local/share/

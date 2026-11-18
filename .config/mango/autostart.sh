@@ -37,3 +37,6 @@ swayidle -w \
     before-sleep 'swaylock' \
     after-resume "$HOME/.config/mango/scripts/auto-monitor.sh; $HOME/.local/bin/restart-waybar" \
     >/dev/null 2>&1 &
+
+# guardião permanente contra vazamentos de RAM/Swap e processos órfãos
+systemctl --user start pc-guardian.timer >/dev/null 2>&1 &
